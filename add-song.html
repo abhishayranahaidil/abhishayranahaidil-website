@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-cat="Romantic">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Add a song — Abhi Shayrana Hai Dil</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.form{max-width:820px}
+.field{margin-bottom:22px}
+label{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--sona);font-weight:600;margin-bottom:8px}
+.help{font-size:13.5px;color:var(--dhundh);margin-bottom:9px}
+input,select,textarea{
+ width:100%;background:var(--siyahi-2);border:1px solid var(--hairline);border-radius:2px;
+ color:var(--kagaz);font-family:var(--ui);font-size:15px;padding:12px 15px}
+textarea{min-height:150px;font-family:var(--dev);font-size:17px;line-height:1.95}
+input:focus,select:focus,textarea:focus{border-color:var(--sona);outline:none}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.out{background:var(--siyahi-2);border:1px solid var(--hairline);border-left:2px solid var(--sona);
+ border-radius:2px;padding:20px;margin-top:14px;white-space:pre-wrap;word-break:break-all;
+ font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--kagaz);max-height:280px;overflow:auto}
+.steps{counter-reset:s;list-style:none;margin:0 0 34px}
+.steps li{counter-increment:s;position:relative;padding-left:44px;margin-bottom:16px;color:var(--dhundh)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:28px;height:28px;
+ border:1px solid var(--sona);border-radius:50%;display:grid;place-items:center;
+ font-family:var(--display);color:var(--sona);font-size:14px}
+.steps b{color:var(--kagaz);font-weight:500}
+.ok{color:var(--patriotic)}
+.warn{color:var(--dance)}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="nav"><div class="wrap">
+ <a class="brand" href="index.html"><span class="seal">अ</span><b>Abhi Shayrana Hai Dil</b></a>
+ <nav class="navlinks"><a href="index.html">Home</a><a href="song-catalogue.html">Songs</a></nav>
+</div></header>
+
+<section class="songhero">
+ <div class="wrap">
+  <p class="crumbs"><a href="index.html">Home</a> · Add a song</p>
+  <p class="eyebrow">Private tool — not linked from the site</p>
+  <h1>Add a song</h1>
+  <p class="lede">Fill this in, and it writes both files you need. Nothing is sent anywhere;
+  it all happens in your browser.</p>
+ </div>
+</section>
+
+<section class="sec" style="padding-top:clamp(28px,4vw,44px)"><div class="wrap">
+<ol class="steps">
+ <li><b>Fill in the form.</b> Only the title and category are required.</li>
+ <li><b>Press Build.</b> You get a data line and a finished song page.</li>
+ <li><b>Paste the data line</b> into <code>songs-data.js</code>, just after <code>window.SONGS = [</code>.</li>
+ <li><b>Download the song page</b> and upload it alongside the others.</li>
+</ol>
+
+<div class="form">
+ <div class="field">
+  <label for="f-title">Song title</label>
+  <input id="f-title" placeholder="Tum Hi To Ho">
+ </div>
+ <div class="row">
+  <div class="field">
+   <label for="f-hi">Hindi title</label>
+   <p class="help">In Devanagari — shown under the English title.</p>
+   <input id="f-hi" placeholder="तुम ही तो हो" style="font-family:var(--dev);font-size:18px">
+  </div>
+  <div class="field">
+   <label for="f-cat">Mood</label>
+   <p class="help">Sets the colour of the page.</p>
+   <select id="f-cat">
+    <option>Romantic</option><option>Heartbreak &amp; Longing</option><option>Ghazal &amp; Nazm</option>
+    <option>Dance</option><option>Family &amp; Devotional</option><option>Patriotic</option>
+    <option>Life &amp; Friendship</option>
+   </select>
+  </div>
+ </div>
+ <div class="row">
+  <div class="field">
+   <label for="f-date">Release date</label>
+   <input id="f-date" placeholder="21 August 2026">
+  </div>
+  <div class="field">
+   <label for="f-year">Year</label>
+   <input id="f-year" type="number" placeholder="2026">
+  </div>
+ </div>
+ <div class="field">
+  <label for="f-desc">Description</label>
+  <p class="help">One or two sentences in your own words. This is what people read on the song page.</p>
+  <textarea id="f-desc" style="min-height:90px;font-family:var(--ui);font-size:15px;line-height:1.6"
+   placeholder="What the song is about, in your words."></textarea>
+ </div>
+ <div class="field">
+  <label for="f-yt">YouTube link</label>
+  <p class="help">Paste the full link. The cover art is taken from it automatically.</p>
+  <input id="f-yt" placeholder="https://www.youtube.com/watch?v=xxxxxxxxxxx">
+ </div>
+ <div class="row">
+  <div class="field">
+   <label for="f-sp">Spotify link</label>
+   <input id="f-sp" placeholder="https://open.spotify.com/album/...">
+  </div>
+  <div class="field">
+   <label for="f-ap">Apple Music link</label>
+   <input id="f-ap" placeholder="https://music.apple.com/...">
+  </div>
+ </div>
+ <div class="field">
+  <label for="f-lyr">Lyrics</label>
+  <p class="help">Optional. Leave a blank line between stanzas.</p>
+  <textarea id="f-lyr" placeholder="पहली पंक्ति…"></textarea>
+ </div>
+
+ <button class="btn btn--solid" id="build" type="button">Build the files</button>
+
+ <div id="result" hidden style="margin-top:40px">
+  <h2 style="font-size:26px;margin-bottom:6px">1 · Paste this into songs-data.js</h2>
+  <p class="help">Put it directly after the line <code>window.SONGS = [</code></p>
+  <div class="out" id="outData"></div>
+  <button class="btn btn--sm" id="copyData" type="button" style="margin-top:12px">Copy</button>
+
+  <h2 style="font-size:26px;margin:38px 0 6px">2 · Download the song page</h2>
+  <p class="help" id="fileName"></p>
+  <button class="btn btn--sm" id="dl" type="button">Download page</button>
+  <p class="help" id="note" style="margin-top:16px"></p>
+ </div>
+</div>
+</div></section>
+
+<script src="songs-data.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var CATVAR={'Romantic':'--romantic','Heartbreak & Longing':'--heartbreak','Ghazal & Nazm':'--ghazal',
+   'Dance':'--dance','Family & Devotional':'--devotional','Patriotic':'--patriotic',
+   'Life & Friendship':'--friendship'};
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+
+  $('#f-cat').addEventListener('change',function(){
+    document.documentElement.setAttribute('data-cat',this.value);
+  });
+
+  function slugify(t){
+    return t.toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
+  }
+  function ytid(u){
+    var m=String(u).match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+    return m?m[1]:'';
+  }
+  function spEmbed(u){
+    var m=String(u).match(/open\.spotify\.com\/(album|track)\/([A-Za-z0-9]+)/);
+    return m?m[1]+'/'+m[2]:'';
+  }
+
+  var built=null;
+
+  $('#build').addEventListener('click',function(){
+    var title=$('#f-title').value.trim();
+    if(!title){ alert('The song needs a title.'); $('#f-title').focus(); return; }
+    var cat=$('#f-cat').value;
+    var slug=slugify(title);
+    var yt=ytid($('#f-yt').value);
+    var sp=spEmbed($('#f-sp').value);
+    var year=parseInt($('#f-year').value,10)||new Date().getFullYear();
+    var desc=$('#f-desc').value.trim()||('“'+title+'” — new release.');
+    var lyr=$('#f-lyr').value.replace(/\r/g,'').trim();
+
+    var links={};
+    if($('#f-yt').value.trim()) links.youtube=$('#f-yt').value.trim();
+    if($('#f-sp').value.trim()) links.spotify=$('#f-sp').value.trim();
+    if($('#f-ap').value.trim()) links.apple=$('#f-ap').value.trim();
+
+    var rec={slug:slug,title:title,hi:$('#f-hi').value.trim(),sub:'',year:year,cat:cat,
+      date:$('#f-date').value.trim(),desc:desc,links:links};
+    if(yt) rec.yt=yt;
+    if(sp) rec.sp=sp;
+    if(lyr) rec.lyrics=true;
+
+    $('#outData').textContent=' '+JSON.stringify(rec)+',';
+    built={rec:rec,lyr:lyr,slug:slug,yt:yt,sp:sp,links:links};
+    $('#fileName').innerHTML='The file will be named <b>'+esc(slug)+'.html</b>';
+    $('#note').innerHTML = yt
+      ? '<span class="ok">Cover art will come from your YouTube link.</span>'
+      : '<span class="warn">No YouTube link, so the page will use a drawn cover with the title on it.</span>';
+    $('#result').hidden=false;
+    $('#result').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  $('#copyData').addEventListener('click',function(){
+    navigator.clipboard.writeText($('#outData').textContent).then(function(){
+      $('#copyData').textContent='Copied';
+      setTimeout(function(){$('#copyData').textContent='Copy';},1800);
+    });
+  });
+
+  $('#dl').addEventListener('click',function(){
+    if(!built) return;
+    var s=built.rec, lyr=built.lyr;
+    var art = s.yt
+      ? '<img src="https://i.ytimg.com/vi/'+s.yt+'/maxresdefault.jpg" alt="'+esc(s.title)+' — cover art" loading="lazy" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+s.yt+'/hqdefault.jpg\'">'
+      : '<img src="" alt="'+esc(s.title)+' — cover" loading="lazy" data-fallback="1">';
+    var ogimg = s.yt ? 'https://i.ytimg.com/vi/'+s.yt+'/maxresdefault.jpg' : '';
+    var spf = s.sp ? '<div class="spf"><iframe src="https://open.spotify.com/embed/'+s.sp+'?utm_source=generator&theme=0" height="152" loading="lazy" title="'+esc(s.title)+' on Spotify" allow="autoplay;clipboard-write;encrypted-media;fullscreen;picture-in-picture"></iframe></div><p class="hint">Spotify plays a 30-second preview unless you are signed in.</p>' : '';
+    var names={youtube:'YouTube',spotify:'Spotify',apple:'Apple Music'};
+    var pills=Object.keys(built.links).map(function(k){
+      return '<a class="pill" href="'+esc(built.links[k])+'" target="_blank" rel="noopener">'+names[k]+' ↗</a>';
+    }).join('');
+
+    var lyrHtml='';
+    if(lyr){
+      var stanzas=lyr.split(/\n\s*\n/).map(function(st){
+        var ls=st.split('\n').filter(function(l){return l.trim();});
+        return '<p>'+ls.map(function(l,i){
+          return '<span class="ly" data-d="'+(i*70)+'">'+esc(l)+'</span>';}).join('')+'</p>';
+      }).join('\n ');
+      lyrHtml='<section class="lyrics"><div class="wrap"><div class="lyrics__box">\n'+
+        ' <h2>Lyrics</h2><p class="sig">Written by Dr Abhishek Srivastava</p>\n '+stanzas+
+        '\n</div></div></section>';
+    }
+
+    var ld={"@context":"https://schema.org","@type":"MusicRecording",name:s.title,
+      byArtist:{"@type":"Person",name:"Dr Abhishek Srivastava"},inLanguage:"hi",
+      datePublished:String(s.year),url:"https://abhishayranahaidil.com/"+s.slug,genre:s.cat};
+    if(ogimg) ld.image=ogimg;
+
+    var page='<!DOCTYPE html>\n<html lang="en" data-cat="'+esc(s.cat)+'">\n<head>\n'+
+'<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n'+
+'<title>'+esc(s.title)+' — Dr Abhishek Srivastava</title>\n'+
+'<meta name="description" content="'+esc(s.desc.slice(0,158))+'">\n'+
+'<link rel="canonical" href="https://abhishayranahaidil.com/'+esc(s.slug)+'">\n'+
+'<meta name="theme-color" content="#15121C">\n'+
+'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Abhi Shayrana Hai Dil">\n'+
+'<meta property="og:title" content="'+esc(s.title)+'">\n'+
+'<meta property="og:description" content="'+esc(s.desc.slice(0,158))+'">\n'+
+'<meta property="og:url" content="https://abhishayranahaidil.com/'+esc(s.slug)+'">\n'+
+(ogimg?'<meta property="og:image" content="'+ogimg+'">\n':'')+
+'<meta name="twitter:card" content="summary_large_image">\n'+
+'<link rel="icon" href="'+document.querySelector('link[rel=icon]').getAttribute('href')+'">\n'+
+'<link rel="preconnect" href="https://fonts.googleapis.com">\n'+
+'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'+
+'<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">\n'+
+'<link rel="stylesheet" href="assets/site.css">\n</head>\n<body>\n<div id="progress"></div>\n'+
+'<header class="nav"><div class="wrap">\n'+
+'<a class="brand" href="index.html"><span class="seal">अ</span><b>Abhi Shayrana Hai Dil</b></a>\n'+
+'<button class="burger" aria-expanded="false" aria-controls="navlinks">Menu</button>\n'+
+'<nav class="navlinks" id="navlinks">\n<a href="index.html">Home</a>\n'+
+'<a href="song-catalogue.html" aria-current="page">Songs</a>\n<a href="ruhaniya.html">Ruhaniya</a>\n'+
+'<a href="index.html#about">About</a>\n<a href="index.html#book">Book</a>\n'+
+'<a class="btn btn--sm" href="song-catalogue.html">Listen</a>\n</nav></div></header>\n'+
+'<section class="songhero">\n <div class="wrap">\n'+
+'  <p class="crumbs"><a href="index.html">Home</a> · <a href="song-catalogue.html">Songs</a> · '+esc(s.title)+'</p>\n'+
+'  <h1>'+esc(s.title)+'</h1>\n'+
+(s.hi?'  <div class="hi">'+esc(s.hi)+'</div>\n':'')+
+'  <div class="facts"><span class="hi-l">'+esc(s.cat)+'</span><span>'+esc(s.date||s.year)+'</span></div>\n'+
+' </div>\n</section>\n'+
+'<section><div class="wrap"><div class="songmain">\n'+
+' <div class="cover rv">'+art+'</div>\n'+
+' <div class="rv" data-d="90">\n  <p class="about">'+esc(s.desc)+'</p>\n  '+spf+'\n'+
+'  <div class="listen">'+pills+'</div>\n </div>\n</div></div></section>\n'+
+lyrHtml+'\n'+
+'<footer><div class="wrap"><div class="fgrid">\n'+
+' <div><div class="fdev">जहाँ शायरी सुर बन जाती है</div>\n'+
+' <p class="fnote">Original Hindi songs by Dr Abhishek Srivastava.</p></div>\n'+
+' <div><h4>Explore</h4><ul><li><a href="song-catalogue.html">All songs</a></li>\n'+
+' <li><a href="ruhaniya.html">Ruhaniya</a></li>\n'+
+' <li><a href="mailto:info@abhishayrana.com">info@abhishayrana.com</a></li></ul></div>\n'+
+' <div></div>\n</div>\n<div class="legal"><span>© 2026 Dr Abhishek Srivastava · Abhi Shayrana Hai Dil</span>\n'+
+'<span>All lyrics and compositions are original works.</span></div>\n</div></footer>\n'+
+'<script>window.PAGE_SONG='+JSON.stringify(s)+';<\/script>\n'+
+'<script type="application/ld+json">'+JSON.stringify(ld)+'<\/script>\n'+
+'<script src="songs-data.js"><\/script>\n<script src="assets/site.js"><\/script>\n'+
+'<script>document.addEventListener("DOMContentLoaded",function(){var i=document.querySelector("img[data-fallback]");if(i&&window.PAGE_SONG)i.src=window.coverSVG(window.PAGE_SONG);});<\/script>\n'+
+'</body></html>';
+
+    var blob=new Blob([page],{type:'text/html;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=s.slug+'.html';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+  });
+})();
+</script>
+</body>
+</html>

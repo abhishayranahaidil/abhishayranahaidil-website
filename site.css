@@ -1,0 +1,494 @@
+/* ============================================================
+   Abhi Shayrana Hai Dil — "ink on paper, at night"
+   Palette: siyahi (ink) · kagaz (paper) · sona (gold leaf)
+   Seven emotion hues, one per category — दिल के सौ रंग
+   ============================================================ */
+
+:root{
+  /* base */
+  --siyahi:      #15121C;   /* ink — page */
+  --siyahi-2:    #1D1926;   /* raised surface */
+  --siyahi-3:    #262130;   /* hover surface */
+  --kagaz:       #F3EBDC;   /* paper — primary text */
+  --dhundh:      #A79BAF;   /* mist — secondary text */
+  --sona:        #C9963F;   /* gold leaf — structure, restraint */
+  --sona-soft:   #E3BE79;
+  --hairline:    rgba(243,235,220,.11);
+
+  /* emotion hues */
+  --romantic:    #E0879A;
+  --heartbreak:  #7E9BD0;
+  --ghazal:      #B48BD8;
+  --dance:       #EFB44E;
+  --devotional:  #E8B87A;
+  --patriotic:   #8DC98F;
+  --friendship:  #7ECFC4;
+
+  /* the page's active accent — overridden per song page */
+  --accent:      var(--sona);
+  --accent-dim:  rgba(201,150,63,.14);
+
+  /* type */
+  --display: 'Newsreader', Georgia, serif;
+  --dev:     'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif;
+  --ui:      'Instrument Sans', system-ui, -apple-system, sans-serif;
+
+  /* scale */
+  --max: 1180px;
+  --gut: clamp(20px, 5vw, 48px);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+[data-cat="Romantic"]              { --accent: var(--romantic);   --accent-dim: rgba(224,135,154,.14) }
+[data-cat="Heartbreak & Longing"]  { --accent: var(--heartbreak); --accent-dim: rgba(126,155,208,.14) }
+[data-cat="Ghazal & Nazm"]         { --accent: var(--ghazal);     --accent-dim: rgba(180,139,216,.14) }
+[data-cat="Dance"]                 { --accent: var(--dance);      --accent-dim: rgba(239,180,78,.14) }
+[data-cat="Family & Devotional"]   { --accent: var(--devotional); --accent-dim: rgba(232,184,122,.14) }
+[data-cat="Patriotic"]             { --accent: var(--patriotic);  --accent-dim: rgba(141,201,143,.14) }
+[data-cat="Life & Friendship"]     { --accent: var(--friendship); --accent-dim: rgba(126,207,196,.14) }
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0 }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100% }
+
+body{
+  background:var(--siyahi);
+  color:var(--kagaz);
+  font-family:var(--ui);
+  font-size:16.5px;
+  line-height:1.65;
+  overflow-x:hidden;
+  /* faint paper tooth */
+  background-image:
+    radial-gradient(1100px 620px at 78% -8%, rgba(201,150,63,.055), transparent 62%),
+    radial-gradient(820px 520px at -6% 42%, var(--accent-dim), transparent 60%);
+  background-attachment:fixed;
+}
+
+img{ max-width:100%; display:block }
+a{ color:var(--sona-soft); text-decoration:none; transition:color .22s var(--ease) }
+a:hover{ color:var(--kagaz) }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:2px }
+::selection{ background:var(--accent); color:var(--siyahi) }
+
+.wrap{ max-width:var(--max); margin-inline:auto; padding-inline:var(--gut) }
+.dev{ font-family:var(--dev) }
+
+/* ---------- type roles ---------- */
+h1,h2,h3,h4{ font-family:var(--display); font-weight:400; line-height:1.1; letter-spacing:-.015em }
+.eyebrow{
+  font-family:var(--ui); font-size:11.5px; font-weight:600;
+  letter-spacing:.3em; text-transform:uppercase; color:var(--accent);
+}
+.lede{ font-size:clamp(17px,2vw,19px); color:var(--dhundh); max-width:58ch }
+.tiny{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--dhundh) }
+
+/* ---------- scroll progress ---------- */
+#progress{
+  position:fixed; top:0; left:0; height:2px; width:0;
+  background:linear-gradient(90deg,var(--sona),var(--accent));
+  z-index:100; transition:width .1s linear;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky; top:0; z-index:60;
+  background:color-mix(in srgb, var(--siyahi) 88%, transparent);
+  backdrop-filter:blur(14px) saturate(120%);
+  border-bottom:1px solid var(--hairline);
+}
+.nav .wrap{ display:flex; align-items:center; gap:32px; height:68px }
+.brand{ display:flex; align-items:center; gap:13px; color:var(--kagaz); flex:none }
+.brand .seal{
+  width:38px; height:38px; flex:none; border-radius:50%;
+  border:1px solid var(--sona); object-fit:cover; background:#000;
+  transition:transform .5s var(--ease), border-color .3s;
+}
+.brand:hover .seal{ transform:rotate(-12deg) scale(1.06); border-color:var(--sona-soft) }
+.brand b{ font-family:var(--display); font-size:19px; font-weight:400; letter-spacing:-.01em; white-space:nowrap }
+.navlinks{ display:flex; align-items:center; gap:28px; margin-left:auto }
+.navlinks a{ font-size:14px; color:var(--dhundh); position:relative; padding-block:4px }
+.navlinks a::after{
+  content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+  background:var(--accent); transition:width .3s var(--ease);
+}
+.navlinks a:hover::after,.navlinks a[aria-current]::after{ width:100% }
+.navlinks a[aria-current]{ color:var(--kagaz) }
+.burger{
+  display:none; margin-left:auto; background:none; border:1px solid var(--hairline);
+  color:var(--kagaz); padding:9px 14px; border-radius:2px; font-family:var(--ui);
+  font-size:13px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--ui); font-size:13px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:14px 28px; border:1px solid var(--sona); color:var(--sona-soft);
+  border-radius:2px; background:none; cursor:pointer;
+  transition:background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+}
+.btn:hover{ background:var(--sona); color:var(--siyahi); transform:translateY(-2px) }
+.btn--solid{ background:var(--sona); color:var(--siyahi); border-color:var(--sona) }
+.btn--solid:hover{ background:var(--sona-soft); border-color:var(--sona-soft); color:var(--siyahi) }
+.btn--sm{ padding:10px 20px; font-size:12px }
+
+/* =====================================================
+   SIGNATURE — the living sher
+   ===================================================== */
+.mehfil{
+  position:relative; min-height:clamp(560px,86vh,860px);
+  display:grid; align-items:center;
+  border-bottom:1px solid var(--hairline); overflow:hidden;
+}
+/* the great watermark letter, drifting */
+.mehfil__mark{
+  position:absolute; right:-6%; top:46%; transform:translateY(-50%);
+  font-family:var(--dev); font-size:clamp(340px,46vw,660px); line-height:.8;
+  color:rgba(243,235,220,.032); pointer-events:none; user-select:none;
+  animation:drift 26s ease-in-out infinite alternate;
+}
+@keyframes drift{ from{ transform:translate(0,-50%) } to{ transform:translate(-26px,-54%) } }
+
+.mehfil__inner{ position:relative; z-index:2; padding-block:clamp(64px,10vh,120px) }
+.sher{ min-height:clamp(210px,30vh,300px); display:flex; flex-direction:column; justify-content:center }
+.sher__lines{ margin-bottom:26px }
+.sher__line{
+  font-family:var(--dev);
+  font-size:clamp(25px,4.4vw,50px);
+  line-height:1.68; color:var(--kagaz);
+  opacity:0; transform:translateY(14px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+}
+.sher.is-on .sher__line{ opacity:1; transform:none }
+.sher.is-on .sher__line:nth-child(2){ transition-delay:.42s }
+.sher__meta{
+  opacity:0; transform:translateY(8px);
+  transition:opacity .7s var(--ease) .95s, transform .7s var(--ease) .95s;
+  max-width:64ch;
+}
+.sher.is-on .sher__meta{ opacity:1; transform:none }
+.sher__trans{ font-family:var(--display); font-style:italic; font-size:clamp(15px,1.7vw,18px); color:var(--dhundh) }
+.sher__from{ margin-top:9px; font-size:11.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--sona) }
+.sher__from a{ color:var(--sona) }
+
+.mehfil__id{ margin-top:clamp(34px,6vh,58px) }
+.mehfil__id h1{
+  font-size:clamp(30px,4.4vw,52px); margin:14px 0 6px;
+  display:flex; flex-wrap:wrap; gap:.32em;
+}
+.mehfil__id h1 span{
+  display:inline-block; opacity:0; transform:translateY(22px);
+  animation:rise .95s var(--ease) forwards;
+}
+@keyframes rise{ to{ opacity:1; transform:none } }
+.mehfil__ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px }
+.sherdots{ display:flex; gap:8px; margin-top:34px }
+.sherdots button{
+  width:26px; height:3px; border:0; padding:0; cursor:pointer; border-radius:2px;
+  background:rgba(243,235,220,.2); transition:background .3s;
+}
+.sherdots button[aria-selected="true"]{ background:var(--accent) }
+.sherdots--count{ font-size:12px; letter-spacing:.2em; color:var(--dhundh); font-variant-numeric:tabular-nums }
+
+/* ---------- marquee of titles ---------- */
+.marquee{
+  border-block:1px solid var(--hairline); overflow:hidden;
+  padding-block:17px; background:var(--siyahi-2);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marquee__track{ display:flex; gap:0; width:max-content; animation:slide 68s linear infinite }
+.marquee:hover .marquee__track{ animation-play-state:paused }
+@keyframes slide{ to{ transform:translateX(-50%) } }
+.marquee a{
+  font-family:var(--dev); font-size:19px; color:var(--dhundh);
+  padding-inline:26px; white-space:nowrap; position:relative;
+}
+.marquee a::before{ content:'·'; position:absolute; left:0; color:var(--sona); opacity:.5 }
+.marquee a:hover{ color:var(--kagaz) }
+
+/* ---------- sections ---------- */
+.sec{ padding-block:clamp(64px,10vw,116px) }
+.sec--tight{ padding-top:0 }
+.sec__head{ display:flex; align-items:flex-end; gap:26px; flex-wrap:wrap; margin-bottom:clamp(32px,5vw,54px) }
+.sec__head h2{ font-size:clamp(27px,3.8vw,44px) }
+.sec__head .dev{ color:var(--sona); font-size:20px; opacity:.75 }
+.sec__more{ margin-left:auto; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent) }
+
+/* ---------- latest release ---------- */
+.latest{
+  display:grid; grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(28px,5vw,60px); align-items:center;
+  background:var(--siyahi-2); border:1px solid var(--hairline);
+  border-left:2px solid var(--accent);
+  border-radius:3px; padding:clamp(22px,3.6vw,44px);
+}
+.latest__art{ position:relative; aspect-ratio:1; border-radius:2px; overflow:hidden; background:var(--siyahi-3) }
+.latest__art img{ width:100%; height:100%; object-fit:cover }
+.latest__badge{
+  position:absolute; top:14px; left:14px; z-index:2;
+  background:var(--siyahi); color:var(--accent);
+  font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  padding:6px 12px; border-radius:2px; border:1px solid var(--accent);
+}
+.latest h3{ font-size:clamp(26px,3.6vw,42px); margin-bottom:4px }
+.latest .hi{ font-family:var(--dev); font-size:clamp(17px,2.1vw,23px); color:var(--accent); margin-bottom:16px }
+
+/* ---------- the seven colours ---------- */
+.hues{ display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:12px }
+.hue{
+  position:relative; overflow:hidden;
+  border:1px solid var(--hairline); border-radius:3px;
+  background:var(--siyahi-2); padding:22px 20px 20px;
+  display:flex; flex-direction:column; gap:6px; min-height:132px;
+  transition:transform .3s var(--ease), border-color .3s;
+}
+.hue::before{
+  content:''; position:absolute; inset:0 auto 0 0; width:3px; background:var(--h);
+  transition:width .35s var(--ease);
+}
+.hue::after{
+  content:''; position:absolute; right:-30px; bottom:-30px; width:96px; height:96px;
+  border-radius:50%; background:var(--h); opacity:.09;
+  transition:transform .45s var(--ease), opacity .35s;
+}
+.hue:hover{ transform:translateY(-4px); border-color:var(--h) }
+.hue:hover::before{ width:100% ; opacity:.055 }
+.hue:hover::after{ transform:scale(1.5); opacity:.16 }
+.hue__n{ font-family:var(--display); font-size:30px; color:var(--h); line-height:1 }
+.hue__name{ font-family:var(--display); font-size:18.5px; color:var(--kagaz); position:relative; z-index:2 }
+.hue__dev{ font-family:var(--dev); font-size:13.5px; color:var(--dhundh); position:relative; z-index:2 }
+
+/* ---------- song grid ---------- */
+.grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(238px,1fr)); gap:clamp(16px,2.2vw,26px) }
+.song{
+  --accent:var(--sona);
+  position:relative; display:flex; flex-direction:column;
+  background:var(--siyahi-2); border:1px solid var(--hairline); border-radius:3px;
+  overflow:hidden; transition:transform .34s var(--ease), border-color .34s var(--ease);
+}
+.song:hover{ transform:translateY(-6px); border-color:var(--accent) }
+.song__art{ position:relative; aspect-ratio:1; overflow:hidden; background:var(--siyahi-3); display:block }
+.song__art img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .7s var(--ease), filter .4s;
+  filter:saturate(.94);
+}
+.song:hover .song__art img{ transform:scale(1.055); filter:saturate(1.05) }
+.song__art::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(21,18,28,.82) 0%, transparent 52%);
+  opacity:.9;
+}
+.song__cat{
+  position:absolute; z-index:2; left:12px; bottom:11px;
+  font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--accent);
+}
+.song__body{ padding:16px 18px 20px; display:flex; flex-direction:column; gap:5px; flex:1 }
+.song__title{ font-family:var(--display); font-size:19.5px; line-height:1.2 }
+.song__title a{ color:var(--kagaz) }
+.song:hover .song__title a{ color:var(--accent) }
+.song__hi{ font-family:var(--dev); font-size:14.5px; color:var(--dhundh) }
+.song__foot{ margin-top:auto; padding-top:11px; display:flex; gap:10px; align-items:center; font-size:11.5px; letter-spacing:.12em; color:var(--dhundh) }
+.song__foot .lyr{ color:var(--accent) }
+
+/* ---------- filters ---------- */
+.tools{ display:flex; flex-direction:column; gap:18px; margin-bottom:34px }
+.chips{ display:flex; gap:9px; flex-wrap:wrap }
+.chip{
+  font-family:var(--ui); font-size:13px; cursor:pointer;
+  padding:9px 17px; border-radius:100px; border:1px solid var(--hairline);
+  background:none; color:var(--dhundh);
+  transition:all .25s var(--ease);
+}
+.chip:hover{ color:var(--kagaz); border-color:var(--c,var(--sona)) }
+.chip[aria-pressed="true"]{
+  background:var(--c,var(--sona)); border-color:var(--c,var(--sona));
+  color:var(--siyahi); font-weight:600;
+}
+.searchrow{ display:flex; gap:14px; flex-wrap:wrap; align-items:center }
+.search{
+  flex:1 1 300px; max-width:440px;
+  background:var(--siyahi-2); border:1px solid var(--hairline); border-radius:2px;
+  color:var(--kagaz); font-family:var(--ui); font-size:15px; padding:13px 17px;
+}
+.search::placeholder{ color:var(--dhundh) }
+.search:focus{ border-color:var(--sona); outline:none }
+.tally{ font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dhundh) }
+.empty{ padding:60px 0; color:var(--dhundh) }
+.empty b{ color:var(--kagaz); font-family:var(--display); font-size:20px; display:block; margin-bottom:8px }
+
+/* ---------- song page ---------- */
+.songhero{ position:relative; overflow:hidden; border-bottom:1px solid var(--hairline);
+  padding-block:clamp(44px,7vw,80px) clamp(34px,5vw,54px) }
+.songhero::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(760px 400px at 88% -20%, var(--accent-dim), transparent 66%);
+  pointer-events:none;
+}
+.crumbs{ font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--dhundh); margin-bottom:24px }
+.crumbs a{ color:var(--dhundh) }
+.crumbs a:hover{ color:var(--accent) }
+.songhero h1{ font-size:clamp(33px,5.6vw,62px); margin-bottom:6px }
+.songhero .hi{ font-family:var(--dev); font-size:clamp(20px,3vw,30px); color:var(--accent); margin-bottom:20px }
+.facts{ display:flex; gap:9px 22px; flex-wrap:wrap; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--dhundh) }
+.facts .hi-l{ color:var(--accent) }
+
+.songmain{ display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(28px,4.5vw,56px);
+  padding-block:clamp(36px,5vw,60px); align-items:start }
+.cover{ aspect-ratio:1; border:1px solid var(--hairline); border-radius:3px; overflow:hidden; background:var(--siyahi-2) }
+.cover img{ width:100%; height:100%; object-fit:cover }
+.about{ font-size:clamp(17px,2vw,19.5px); line-height:1.72; max-width:60ch }
+.about--placeholder{ color:var(--dhundh); font-style:italic }
+.spf iframe{ border:0; border-radius:12px; width:100%; margin-top:26px }
+.hint{ font-size:13px; color:var(--dhundh); margin-top:11px }
+
+.listen{ display:flex; gap:10px; flex-wrap:wrap; margin-top:28px }
+.pill{
+  font-size:13.5px; padding:10px 19px; border-radius:100px;
+  border:1px solid var(--hairline); background:var(--siyahi-2); color:var(--kagaz);
+  transition:border-color .25s, color .25s, transform .25s var(--ease);
+}
+.pill:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px) }
+
+/* lyrics — revealed line by line, like reading */
+.lyrics{ border-top:1px solid var(--hairline); padding-block:clamp(44px,7vw,78px) }
+.lyrics__box{ max-width:740px; border-left:2px solid var(--accent); padding-left:clamp(20px,3.4vw,40px) }
+.lyrics h2{ font-size:clamp(23px,3vw,31px); margin-bottom:5px }
+.lyrics .sig{ font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--dhundh); margin-bottom:32px }
+.lyrics p{ margin-bottom:1.5em }
+.ly{
+  display:block; font-family:var(--dev);
+  font-size:clamp(17.5px,2.2vw,21px); line-height:2.06; color:var(--kagaz);
+  opacity:0; transform:translateY(9px);
+  transition:opacity .6s var(--ease), transform .6s var(--ease);
+}
+.ly.is-on{ opacity:1; transform:none }
+
+/* prev / next */
+.pn{ display:flex; gap:20px; justify-content:space-between; flex-wrap:wrap;
+  border-top:1px solid var(--hairline); padding-block:clamp(34px,5vw,54px) }
+.pn a{ flex:1 1 240px; max-width:48%; color:var(--dhundh) }
+.pn a:last-child{ text-align:right }
+.pn a:only-child{ max-width:100% }
+.pn .l{ display:block; font-size:11px; letter-spacing:.24em; text-transform:uppercase; margin-bottom:7px }
+.pn .t{ font-family:var(--display); font-size:clamp(18px,2.2vw,23px); color:var(--kagaz); transition:color .25s }
+.pn a:hover .t{ color:var(--accent) }
+
+/* ---------- about / stats / timeline ---------- */
+.two{ display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:clamp(32px,5vw,66px); align-items:start }
+.bio p{ margin-bottom:17px; color:var(--dhundh) }
+.bio strong{ color:var(--kagaz); font-weight:500 }
+.bio .em{ color:var(--kagaz); font-family:var(--display); font-style:italic; font-size:19px }
+.sign{ font-family:var(--dev); font-size:23px; color:var(--sona); margin-top:14px }
+.stats{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hairline);
+  border:1px solid var(--hairline); border-radius:3px; overflow:hidden }
+.stats div{ background:var(--siyahi-2); padding:26px 24px }
+.stats b{ display:block; font-family:var(--display); font-size:clamp(30px,4vw,40px); color:var(--sona); font-weight:400 }
+.stats span{ font-size:11.5px; letter-spacing:.17em; text-transform:uppercase; color:var(--dhundh) }
+
+.tl{ border-left:1px solid var(--hairline); padding-left:clamp(24px,3.4vw,42px); max-width:720px }
+.tl__i{ position:relative; padding-bottom:clamp(30px,4vw,46px) }
+.tl__i::before{
+  content:''; position:absolute; top:9px; width:9px; height:9px; border-radius:50%;
+  left:calc(-1 * clamp(24px,3.4vw,42px) - 5px);
+  background:var(--siyahi); border:2px solid var(--sona);
+}
+.tl__i:last-child{ padding-bottom:0 }
+.tl__y{ font-family:var(--display); color:var(--sona); font-size:14.5px; letter-spacing:.1em; margin-bottom:4px }
+.tl__i h3{ font-size:21px; margin-bottom:6px }
+.tl__i p{ color:var(--dhundh); font-size:15.5px; max-width:56ch }
+
+/* ---------- album + book bands ---------- */
+.band{
+  display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(28px,5vw,58px); align-items:center;
+  background:var(--siyahi-2); border:1px solid var(--hairline); border-radius:3px;
+  padding:clamp(22px,3.6vw,46px);
+}
+.band h2{ font-size:clamp(26px,3.6vw,40px); margin:13px 0 6px }
+.band .hi{ font-family:var(--dev); font-size:clamp(17px,2.1vw,23px); color:var(--sona); margin-bottom:16px }
+.band p{ color:var(--dhundh); margin-bottom:14px }
+.bookface{
+  border:1px solid var(--hairline); border-radius:2px; overflow:hidden;
+  background:var(--siyahi-3); box-shadow:0 18px 44px rgba(0,0,0,.5);
+  transition:transform .5s var(--ease);
+}
+.bookface img{ width:100%; height:auto; display:block }
+.band:hover .bookface{ transform:translateY(-5px) rotate(-.5deg) }
+
+/* ---------- footer ---------- */
+footer{ border-top:1px solid var(--hairline); background:var(--siyahi-2); padding-block:clamp(48px,7vw,72px) clamp(32px,4vw,46px) }
+.fgrid{ display:grid; grid-template-columns:minmax(0,1.5fr) repeat(2,minmax(0,1fr)); gap:clamp(28px,4vw,52px); margin-bottom:clamp(32px,4vw,46px) }
+.fdev{ font-family:var(--dev); font-size:22px; color:var(--sona-soft); margin-bottom:12px; line-height:1.6 }
+.fnote{ color:var(--dhundh); font-size:14.5px; max-width:38ch }
+footer h4{ font-family:var(--ui); font-size:11px; font-weight:600; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--sona); margin-bottom:17px }
+footer ul{ list-style:none }
+footer li{ margin-bottom:9px; font-size:14.5px }
+footer li a{ color:var(--dhundh) }
+footer li a:hover{ color:var(--kagaz) }
+.legal{ border-top:1px solid var(--hairline); padding-top:24px; display:flex; gap:14px;
+  justify-content:space-between; flex-wrap:wrap; font-size:12.5px; color:var(--dhundh) }
+
+/* ---------- reveal ---------- */
+.rv{ opacity:0; transform:translateY(20px); transition:opacity .78s var(--ease), transform .78s var(--ease) }
+.rv.is-on{ opacity:1; transform:none }
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .latest,.two,.band,.songmain{ grid-template-columns:1fr }
+  .songmain .cover{ max-width:320px }
+  .fgrid{ grid-template-columns:1fr 1fr }
+}
+@media (max-width:720px){
+  .navlinks{
+    display:none; position:absolute; inset:68px 0 auto; flex-direction:column;
+    align-items:flex-start; gap:20px; padding:24px var(--gut) 30px;
+    background:var(--siyahi); border-bottom:1px solid var(--hairline);
+  }
+  .navlinks.is-open{ display:flex }
+  .burger{ display:block }
+  .mehfil{ min-height:auto }
+  .sher{ min-height:230px }
+  .fgrid{ grid-template-columns:1fr }
+  .stats{ grid-template-columns:1fr 1fr }
+  .pn a{ max-width:100% }
+  .pn a:last-child{ text-align:left }
+  .grid{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)) }
+  .song__title{ font-size:17px }
+}
+
+/* ---------- motion off ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto }
+  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important }
+  .rv,.ly,.sher__line,.sher__meta{ opacity:1 !important; transform:none !important }
+  .mehfil__id h1 span{ opacity:1 !important; transform:none !important }
+  .marquee__track{ animation:none }
+}
+
+/* ---------- print ---------- */
+@media print{
+  body{ background:#fff; color:#000 }
+  .nav,.marquee,footer,.listen,.spf,#progress{ display:none }
+  .ly,.rv{ opacity:1 !important; transform:none !important }
+}
+
+/* ---------- range table (for directors) ---------- */
+.rangetable{ border:1px solid var(--hairline); border-radius:3px; overflow:hidden; background:var(--siyahi-2) }
+.rangetable table{ width:100%; border-collapse:collapse }
+.rangetable th{ text-align:left; font-family:var(--ui); font-size:11px; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--sona);
+  padding:16px 20px; border-bottom:1px solid var(--hairline) }
+.rangetable td{ padding:14px 20px; border-bottom:1px solid var(--hairline); font-size:15.5px }
+.rangetable tr:last-child td{ border-bottom:0 }
+.rangetable tbody tr{ transition:background .2s }
+.rangetable tbody tr:hover{ background:var(--siyahi-3) }
+.rangetable td:first-child{ color:var(--dhundh) }
+.rangetable td:last-child a{ color:var(--kagaz) }
+.rangetable td:last-child a:hover{ color:var(--sona-soft) }
+@media(max-width:560px){ .rangetable td,.rangetable th{ padding:12px 14px; font-size:14px } }
