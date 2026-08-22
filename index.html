@@ -16,7 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/logo-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"></noscript>
+<script>document.documentElement.className+=" js";</script>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -37,19 +40,22 @@
  <div class="wrap mehfil__inner">
   <p class="eyebrow" style="margin-bottom:26px">A couplet, and then the song</p>
   <div class="sher" id="sher">
-   <div class="sher__lines" id="sherLines"></div>
+   <div class="sher__lines" id="sherLines" lang="hi"><div class="sher__line" lang="hi">तेरी ज़मीं पे क़दम नहीं मेरे तो क्या हुआ,</div><div class="sher__line" lang="hi">तेरे ही नाम से जुड़ी है मेरी हर दुआ।</div></div>
    <div class="sher__meta">
-    <p class="sher__trans" id="sherTrans"></p>
-    <p class="sher__from" id="sherFrom"></p>
+    <p class="sher__trans" id="sherTrans" lang="en">What of it, that my feet never touch your soil — every prayer I make still carries your name.</p>
+    <p class="sher__from" id="sherFrom">from <a href="mere-vatan.html">Mere Vatan</a></p>
    </div>
   </div>
-  <div class="sherdots" id="sherDots" role="tablist" aria-label="Choose a couplet"></div>
+  <div class="sherctl">
+   <button class="sherpause" id="sherPause" type="button" aria-pressed="false">Pause</button>
+   <div class="sherdots" id="sherDots" aria-label="Choose a couplet"></div>
+  </div>
   <div class="mehfil__id">
    <h1 id="heroName">Abhi Shayrana Hai Dil</h1>
    <p class="lede">Dr Abhishek Srivastava — 50+ original Hindi songs, thirty-five years of
    poetry behind them. Every word written by hand.</p>
    <div class="mehfil__ctas">
-    <a class="btn btn--solid" href="song-catalogue.html">All 48 songs</a>
+    <a class="btn btn--solid" href="song-catalogue.html">All 50+ songs</a>
     <a class="btn" href="https://open.spotify.com/artist/0JUHbbx33RFrC7t8l1ZVWW" target="_blank" rel="noopener">Spotify</a>
    </div>
   </div>
@@ -60,9 +66,9 @@
 
 <section class="sec" id="latest">
  <div class="wrap">
-  <div class="sec__head"><h2>Just released</h2><span class="dev">नया गीत</span></div>
+  <div class="sec__head"><h2>Just released</h2></div>
   <div class="latest rv" style="--accent:var(--romantic)">
-   <div class="latest__art"><span class="latest__badge">New</span><img src="https://i.scdn.co/image/ab67616d0000b2732aebe9ce341c8e0d104061e4" alt="Tum Hi To Ho — cover art" loading="lazy"></div>
+   <div class="latest__art"><span class="latest__badge">New</span><img src="https://i.scdn.co/image/ab67616d0000b2732aebe9ce341c8e0d104061e4" alt="Tum Hi To Ho — cover art" width="640" height="640" loading="eager" fetchpriority="high"></div>
    <div>
     <p class="eyebrow">21 August 2026 · Romantic</p>
     <h3>Tum Hi To Ho</h3>
@@ -71,7 +77,7 @@
     <div class="spf"><iframe src="https://open.spotify.com/embed/track/6OivUHULun7hviQ6ZV04zV?utm_source=generator&theme=0" height="152" loading="lazy" title="Tum Hi To Ho on Spotify" allow="autoplay;clipboard-write;encrypted-media;fullscreen;picture-in-picture"></iframe></div>
     <div class="listen" style="margin-top:22px">
      <a class="pill" href="tum-hi-to-ho.html">Song page</a>
-     <a class="pill" href="https://open.spotify.com/album/5nP9qlylBlewv152a0TqOJ" target="_blank" rel="noopener">Spotify ↗</a>
+     <a class="pill" href="https://www.youtube.com/watch?v=OOmGPsynH6I" target="_blank" rel="noopener">YouTube ↗</a><a class="pill" href="https://open.spotify.com/album/5nP9qlylBlewv152a0TqOJ" target="_blank" rel="noopener">Spotify ↗</a>
     </div>
    </div>
   </div>
@@ -81,60 +87,51 @@
 <section class="sec sec--tight" id="colours">
  <div class="wrap">
   <div class="sec__head">
-   <h2>The colours of the heart</h2><span class="dev">दिल के रंग</span>
-   <a class="sec__more" href="song-catalogue.html">Browse everything →</a>
+   <h2>The colours of the heart</h2><a class="sec__more" href="song-catalogue.html">Browse everything →</a>
   </div>
-  <p class="lede" style="margin-bottom:32px">Seven moods across 48 songs. Pick one and the
+  <p class="lede" style="margin-bottom:32px">Seven moods across 50+ songs. Pick one and the
   catalogue filters itself.</p>
   <div class="hues"><a class="hue rv" data-d="0" style="--h:var(--romantic)" href="song-catalogue.html?c=Romantic">
  <span class="hue__n">23</span>
- <span class="hue__name">Romantic</span>
- <span class="hue__dev">मोहब्बत</span></a><a class="hue rv" data-d="55" style="--h:var(--heartbreak)" href="song-catalogue.html?c=Heartbreak &amp; Longing">
+ <span class="hue__name">Romantic</span></a><a class="hue rv" data-d="55" style="--h:var(--heartbreak)" href="song-catalogue.html?c=Heartbreak &amp; Longing">
  <span class="hue__n">4</span>
- <span class="hue__name">Heartbreak &amp; Longing</span>
- <span class="hue__dev">जुदाई</span></a><a class="hue rv" data-d="110" style="--h:var(--ghazal)" href="song-catalogue.html?c=Ghazal &amp; Nazm">
+ <span class="hue__name">Heartbreak &amp; Longing</span></a><a class="hue rv" data-d="110" style="--h:var(--ghazal)" href="song-catalogue.html?c=Ghazal &amp; Nazm">
  <span class="hue__n">4</span>
- <span class="hue__name">Ghazal &amp; Nazm</span>
- <span class="hue__dev">ग़ज़ल</span></a><a class="hue rv" data-d="165" style="--h:var(--dance)" href="song-catalogue.html?c=Dance">
+ <span class="hue__name">Ghazal &amp; Nazm</span></a><a class="hue rv" data-d="165" style="--h:var(--dance)" href="song-catalogue.html?c=Dance">
  <span class="hue__n">3</span>
- <span class="hue__name">Dance</span>
- <span class="hue__dev">नाच</span></a><a class="hue rv" data-d="220" style="--h:var(--devotional)" href="song-catalogue.html?c=Family &amp; Devotional">
+ <span class="hue__name">Dance</span></a><a class="hue rv" data-d="220" style="--h:var(--devotional)" href="song-catalogue.html?c=Family &amp; Devotional">
  <span class="hue__n">6</span>
- <span class="hue__name">Family &amp; Devotional</span>
- <span class="hue__dev">अपने</span></a><a class="hue rv" data-d="275" style="--h:var(--patriotic)" href="song-catalogue.html?c=Patriotic">
+ <span class="hue__name">Family &amp; Devotional</span></a><a class="hue rv" data-d="275" style="--h:var(--patriotic)" href="song-catalogue.html?c=Patriotic">
  <span class="hue__n">2</span>
- <span class="hue__name">Patriotic</span>
- <span class="hue__dev">वतन</span></a><a class="hue rv" data-d="330" style="--h:var(--friendship)" href="song-catalogue.html?c=Life &amp; Friendship">
+ <span class="hue__name">Patriotic</span></a><a class="hue rv" data-d="330" style="--h:var(--friendship)" href="song-catalogue.html?c=Life &amp; Friendship">
  <span class="hue__n">6</span>
- <span class="hue__name">Life &amp; Friendship</span>
- <span class="hue__dev">ज़िंदगी</span></a></div>
+ <span class="hue__name">Life &amp; Friendship</span></a></div>
  </div>
 </section>
 
 <section class="sec sec--tight">
  <div class="wrap">
-  <div class="sec__head"><h2>Most heard</h2><span class="dev">सबसे पसंदीदा</span>
-   <a class="sec__more" href="song-catalogue.html">All 48 songs →</a></div>
+  <div class="sec__head"><h2>Most heard</h2><a class="sec__more" href="song-catalogue.html">All 50+ songs →</a></div>
   <div class="grid"><article class="song rv" data-d="0" style="--accent:var(--patriotic)">
- <a class="song__art" href="mere-vatan.html" aria-label="Mere Vatan"><img src="https://i.ytimg.com/vi/XiIMIUOlv1I/maxresdefault.jpg" alt="Mere Vatan — cover art" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/XiIMIUOlv1I/hqdefault.jpg'">
+ <a class="song__art" href="mere-vatan.html" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/XiIMIUOlv1I/maxresdefault.jpg" alt="Mere Vatan — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/XiIMIUOlv1I/hqdefault.jpg'">
   <span class="song__cat">Patriotic</span></a>
  <div class="song__body">
   <h3 class="song__title"><a href="mere-vatan.html">Mere Vatan</a></h3>
-  <div class="song__hi">मेरे वतन</div>
+  <div class="song__hi" lang="hi">मेरे वतन</div>
   <div class="song__foot"><span>2026</span></div>
  </div></article><article class="song rv" data-d="70" style="--accent:var(--heartbreak)">
- <a class="song__art" href="bechainiyan.html" aria-label="Bechainiyan"><img src="https://i.ytimg.com/vi/ckJChqSGeo0/maxresdefault.jpg" alt="Bechainiyan — cover art" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ckJChqSGeo0/hqdefault.jpg'">
+ <a class="song__art" href="bechainiyan.html" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/ckJChqSGeo0/maxresdefault.jpg" alt="Bechainiyan — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ckJChqSGeo0/hqdefault.jpg'">
   <span class="song__cat">Heartbreak &amp; Longing</span></a>
  <div class="song__body">
   <h3 class="song__title"><a href="bechainiyan.html">Bechainiyan</a></h3>
-  <div class="song__hi">बेचैनियाँ</div>
+  <div class="song__hi" lang="hi">बेचैनियाँ</div>
   <div class="song__foot"><span>2025</span><span class="lyr">Highly streamed</span></div>
  </div></article><article class="song rv" data-d="140" style="--accent:var(--heartbreak)">
- <a class="song__art" href="gam-teri-bewafai-ka.html" aria-label="Gam Teri Bewafai Ka"><img src="https://i.ytimg.com/vi/PjXuqWbqXuI/maxresdefault.jpg" alt="Gam Teri Bewafai Ka — cover art" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/PjXuqWbqXuI/hqdefault.jpg'">
+ <a class="song__art" href="gam-teri-bewafai-ka.html" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/PjXuqWbqXuI/maxresdefault.jpg" alt="Gam Teri Bewafai Ka — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/PjXuqWbqXuI/hqdefault.jpg'">
   <span class="song__cat">Heartbreak &amp; Longing</span></a>
  <div class="song__body">
   <h3 class="song__title"><a href="gam-teri-bewafai-ka.html">Gam Teri Bewafai Ka</a></h3>
-  <div class="song__hi">ग़म तेरी बेवफ़ाई का</div>
+  <div class="song__hi" lang="hi">ग़म तेरी बेवफ़ाई का</div>
   <div class="song__foot"><span>2025</span><span class="lyr">Most-streamed song</span></div>
  </div></article></div>
  </div>
@@ -143,11 +140,11 @@
 <section class="sec sec--tight" id="album">
  <div class="wrap">
   <div class="band rv">
-   <div class="latest__art"><img src="https://i.ytimg.com/vi/ykJOYn69c8U/maxresdefault.jpg" alt="Ruhaniya — cover art" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ykJOYn69c8U/hqdefault.jpg'"></div>
+   <div class="latest__art"><img src="https://i.ytimg.com/vi/ykJOYn69c8U/maxresdefault.jpg" alt="Ruhaniya — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ykJOYn69c8U/hqdefault.jpg'"></div>
    <div>
     <p class="eyebrow">The album · 2025</p>
     <h2>Ruhaniya</h2>
-    <div class="hi">रूहानिया</div>
+    <div class="hi" lang="hi">रूहानिया</div>
     <p>Five songs whose words were published as poems before they were ever sung — love that
     behaves like faith, approached from five directions.</p>
     <a class="btn btn--sm" href="ruhaniya.html">Open the album</a>
@@ -158,7 +155,7 @@
 
 <section class="sec sec--tight" id="about">
  <div class="wrap">
-  <div class="sec__head"><h2>The poet</h2><span class="dev">परिचय</span></div>
+  <div class="sec__head"><h2>The poet</h2></div>
   <div class="two">
    <div class="bio rv">
     <p>I'm <strong>Dr Abhishek Srivastava</strong> — a scientist by profession, a poet by soul.</p>
@@ -166,14 +163,14 @@
     ever sung. In 2025 the poems started becoming songs. I write every word myself and direct how
     each one sounds; the technology is an instrument in the room, not the author.</p>
     <p>A song here is a memory, a mood, or an argument I was having with myself. Many began as pages
-    in <strong>दिल के सौ रंग</strong> — a hundred poems, published before a note of this existed.
+    in <strong>Dil Ke Sau Rang</strong> — a hundred poems, published before a note of this existed.
     <a href="credits.html">How these songs are made →</a></p>
     <p class="em">Let the words sing. Let the melodies speak.</p>
-    <div class="sign">— अभिषेक श्रीवास्तव</div>
+    <div class="sign">— Abhishek Srivastava</div>
    </div>
    <div class="stats rv" data-d="120">
     <div><b data-count="35" data-suffix="+">35+</b><span>Years writing</span></div>
-    <div><b data-count="48">48</b><span>Songs released</span></div>
+    <div><b data-count="50" data-suffix="+">50+</b><span>Songs released</span></div>
     <div><b data-count="250" data-suffix="+">250+</b><span>Poems written</span></div>
     <div><b>100%</b><span>Original lyrics</span></div>
    </div>
@@ -183,11 +180,11 @@
 
 <section class="sec sec--tight" id="journey">
  <div class="wrap">
-  <div class="sec__head"><h2>How it happened</h2><span class="dev">सफ़र</span></div>
+  <div class="sec__head"><h2>How it happened</h2></div>
   <div class="tl">
    <div class="tl__i rv"><div class="tl__y">1988</div><h3>A first poem</h3>
     <p>A boy writes something about life and does not stop writing for the next thirty-five years.</p></div>
-   <div class="tl__i rv" data-d="80"><div class="tl__y">2025</div><h3>दिल के सौ रंग</h3>
+   <div class="tl__i rv" data-d="80"><div class="tl__y">2025</div><h3>Dil Ke Sau Rang</h3>
     <p>A hundred poems collected into a book — devotion, tenderness, satire, grief, and the
     ordinary business of being alive.</p></div>
    <div class="tl__i rv" data-d="160"><div class="tl__y">April 2025</div><h3>O Meet Mere Man Ke</h3>
@@ -205,7 +202,7 @@
  <div class="wrap">
   <div class="band rv">
    <div class="bookface"><img src="assets/book-cover.jpg"
-     alt="दिल के सौ रंग — सौ कविताओं के संग, poetry collection by Abhishek Srivastava"
+     alt="Dil Ke Sau Rang — the poetry collection by Abhishek Srivastava"
      width="900" height="1436" loading="lazy"></div>
    <div>
     <p class="eyebrow">The book</p>
@@ -223,19 +220,18 @@
 <footer><div class="wrap">
 <div class="fgrid">
  <div>
-  <div class="fdev">जहाँ शायरी सुर बन जाती है</div>
   <p class="fnote">Original Hindi songs by Dr Abhishek Srivastava. Every word written by hand;
   the sound built around it.</p>
  </div>
  <div><h4>Listen</h4><ul><li><a href="https://www.youtube.com/@AbhiShayranaHaiDil" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://open.spotify.com/artist/0JUHbbx33RFrC7t8l1ZVWW" target="_blank" rel="noopener">Spotify</a></li><li><a href="https://music.apple.com/us/artist/abhishek-srivastava/1811123784" target="_blank" rel="noopener">Apple Music</a></li><li><a href="https://www.youtube.com/channel/UCoKwcxiVF-7jePoWAEQfk7g" target="_blank" rel="noopener">YouTube Music</a></li><li><a href="https://music.amazon.co.uk/artists/B075CT7GXM/abhishek-srivastava?marketplaceId=A1F83G8C2ARO7P&musicTerritory=GB" target="_blank" rel="noopener">Amazon Music</a></li><li><a href="https://www.instagram.com/abhi_shayrana_hai_dil/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/AbhiShayranaHaiDil" target="_blank" rel="noopener">Facebook</a></li></ul></div>
  <div><h4>Explore</h4><ul>
-  <li><a href="song-catalogue.html">All 48 songs</a></li>
+  <li><a href="song-catalogue.html">All 50+ songs</a></li>
   <li><a href="ruhaniya.html">Ruhaniya — the album</a></li>
   <li><a href="index.html#journey">The journey</a></li>
   <li><a href="index.html#book">The poetry book</a></li>
   <li><a href="credits.html">Words &amp; credits</a></li>
   <li><a href="work.html">For film &amp; music directors</a></li>
-  <li><a href="mailto:info@abhishayrana.com">info@abhishayrana.com</a></li>
+  <li><a href="mailto:abhishayranahaidil@gmail.com">abhishayranahaidil@gmail.com</a></li>
  </ul></div>
 </div>
 <div class="legal">

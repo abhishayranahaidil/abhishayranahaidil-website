@@ -63,14 +63,14 @@
   function artTag(s, cls) {
     var fallback = coverSVG(s);
     if (s.cover) {
-      return '<img src="' + esc(s.cover) + '" alt="' + esc(s.title) + ' — cover art" loading="lazy"' +
+      return '<img src="' + esc(s.cover) + '" alt="' + esc(s.title) + ' — cover art" width="640" height="640" loading="lazy"' +
         (cls ? ' class="' + cls + '"' : '') +
         ' onerror="this.onerror=null;this.src=\'' + fallback + '\'">';
     }
     if (s.yt) {
       var hq = 'https://i.ytimg.com/vi/' + s.yt + '/hqdefault.jpg';
       return '<img src="https://i.ytimg.com/vi/' + s.yt + '/maxresdefault.jpg" alt="' +
-        esc(s.title) + ' — cover art" loading="lazy"' + (cls ? ' class="' + cls + '"' : '') +
+        esc(s.title) + ' — cover art" width="640" height="640" loading="lazy"' + (cls ? ' class="' + cls + '"' : '') +
         ' onerror="this.onerror=function(){this.onerror=null;this.src=\'' + fallback + '\'};this.src=\'' + hq + '\'">';
     }
     return '<img src="' + fallback + '" alt="' + esc(s.title) + ' — cover" loading="lazy"' +
@@ -168,9 +168,8 @@
     (MANY ? [] : window.SHERS).forEach(function (_, n) {
       var b = document.createElement('button');
       b.type = 'button';
-      b.setAttribute('role', 'tab');
-      b.setAttribute('aria-selected', n === 0 ? 'true' : 'false');
-      b.setAttribute('aria-label', 'Couplet ' + (n + 1));
+      b.setAttribute('aria-current', n === 0 ? 'true' : 'false');
+      b.setAttribute('aria-label', 'Show couplet ' + (n + 1) + ' of ' + window.SHERS.length);
       b.addEventListener('click', function () { show(n, true); });
       dots.appendChild(b);
     });
@@ -187,24 +186,44 @@
         if (num) num.textContent = (n + 1) + ' / ' + window.SHERS.length;
       } else {
         $$('button', dots).forEach(function (b, k) {
-          b.setAttribute('aria-selected', k === n ? 'true' : 'false');
+          b.setAttribute('aria-current', k === n ? 'true' : 'false');
         });
       }
       requestAnimationFrame(function () { box.classList.add('is-on'); });
     }
 
     function show(n, manual) {
-      if (manual && timer) { clearInterval(timer); timer = null; }
+      if (manual && timer) {
+        clearInterval(timer); timer = null;
+        var pb = document.getElementById('sherPause');
+        if (pb) { pb.setAttribute('aria-pressed','true'); pb.textContent = 'Play'; }
+      }
       i = n;
       if (REDUCED) { paint(i); return; }
       box.classList.remove('is-on');
       setTimeout(function () { paint(i); }, 460);
     }
 
-    paint(0);
-    if (!REDUCED && window.SHERS.length > 1) {
+    function start() {
+      if (timer || REDUCED || window.SHERS.length < 2) return;
       timer = setInterval(function () { show((i + 1) % window.SHERS.length); }, 9500);
     }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    paint(0);
+    var pause = document.getElementById('sherPause');
+    if (pause) {
+      if (REDUCED || window.SHERS.length < 2) { pause.hidden = true; }
+      pause.addEventListener('click', function () {
+        var paused = pause.getAttribute('aria-pressed') === 'true';
+        if (paused) { start(); pause.setAttribute('aria-pressed','false'); pause.textContent = 'Pause'; }
+        else        { stop();  pause.setAttribute('aria-pressed','true');  pause.textContent = 'Play'; }
+      });
+    }
+    // stop while someone is reading with the keyboard, or hovering
+    box.addEventListener('mouseenter', stop);
+    box.addEventListener('focusin', stop);
+    start();
   }
 
   /* ---------- hero name, word by word ---------- */
@@ -222,7 +241,7 @@
     var t = $('#marqueeTrack');
     if (!t || !window.SONGS) return;
     var items = window.SONGS.map(function (s) {
-      return '<a href="' + esc(s.slug) + '.html">' + esc(s.hi || s.title) + '</a>';
+      return '<a href="' + esc(s.slug) + '.html" lang="' + (s.hi ? 'hi' : 'en') + '">' + esc(s.hi || s.title) + '</a>';
     }).join('');
     t.innerHTML = items + items;   /* doubled so the loop is seamless */
   }
