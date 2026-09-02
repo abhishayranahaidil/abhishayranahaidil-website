@@ -6,6 +6,8 @@
    ============================================================ */
 
 window.SONGS = [
+ {"slug": "laut-aa", "title": "Laut Aa", "hi": "लौट आ", "sub": "", "year": 2026, "cat": "Heartbreak & Longing", "date": "4 September 2026", "desc": "“Laut Aa” — come back.", "cover": "assets/laut-aa.jpg", "audio": "assets/laut-aa.mp3", "links": {}, "latest": true, "upcoming": true, "placeholder": true},
+ {"slug": "bhai-mere", "title": "Bhai Mere", "sub": "Rakhi Song", "hi": "भाई मेरे", "year": 2026, "cat": "Family & Devotional", "date": "27 August 2026", "desc": "“Bhai Mere” — my brother. A Rakshabandhan song.", "yt": "eHbj759ImZw", "cover": "https://i.scdn.co/image/ab67616d0000b273170f5ba3873c830b9d15bb15", "sp": "track/56nQ8KvrfQSNNNwddf4aG0", "links": {"youtube": "https://www.youtube.com/watch?v=eHbj759ImZw", "spotify": "https://open.spotify.com/album/22ZyOjHVAI6TB3O3GYJNzn"}, "placeholder": true},
  {
   "slug": "tum-hi-to-ho",
   "title": "Tum Hi To Ho",
@@ -22,8 +24,7 @@ window.SONGS = [
   "yt": "OOmGPsynH6I",
   "cover": "https://i.scdn.co/image/ab67616d0000b2732aebe9ce341c8e0d104061e4",
   "sp": "track/6OivUHULun7hviQ6ZV04zV",
-  "latest": true,
-  "placeholder": true
+    "placeholder": true
  },
  {
   "slug": "two-homes-one-heart",

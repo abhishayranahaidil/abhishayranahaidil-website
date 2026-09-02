@@ -196,8 +196,8 @@ h1,h2,h3,h4{ font-family:var(--display); font-weight:400; line-height:1.1; lette
 
 /* ---------- marquee of titles ---------- */
 .marquee{
-  border-block:1px solid var(--hairline); overflow:hidden;
-  padding-block:17px; background:var(--siyahi-2);
+  border-bottom:1px solid var(--hairline); overflow:hidden;
+  padding-block:15px; background:var(--siyahi-2);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
 .marquee__track{ display:flex; gap:0; width:max-content; animation:slide 68s linear infinite }
@@ -514,3 +514,42 @@ footer li a:hover{ color:var(--kagaz) }
   border-left:2px solid var(--accent); padding-left:11px; margin:4px 0 2px;
 }
 .song__hit mark{ background:none; color:var(--accent); font-weight:500 }
+
+/* ---------- the release before the newest ---------- */
+.prevrel{
+  display:grid; grid-template-columns:96px minmax(0,1fr) auto;
+  gap:clamp(16px,2.6vw,26px); align-items:center; margin-top:18px;
+  background:var(--siyahi-2); border:1px solid var(--hairline);
+  border-left:2px solid var(--accent); border-radius:3px;
+  padding:16px clamp(16px,2.6vw,26px) 16px 16px;
+  transition:border-color .3s var(--ease), transform .3s var(--ease);
+}
+.prevrel:hover{ transform:translateY(-3px); border-color:var(--accent) }
+.prevrel__art{ display:block; width:96px; aspect-ratio:1; border-radius:2px; overflow:hidden; background:var(--siyahi-3) }
+.prevrel__art img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease) }
+.prevrel:hover .prevrel__art img{ transform:scale(1.06) }
+.prevrel__body h3{ font-size:clamp(20px,2.4vw,26px); margin:6px 0 2px }
+.prevrel__body h3 a{ color:var(--kagaz) }
+.prevrel:hover .prevrel__body h3 a{ color:var(--accent) }
+.prevrel__body .hi{ font-family:var(--dev); font-size:15px; color:var(--dhundh) }
+.prevrel__links{ display:flex; gap:9px; flex-wrap:wrap; justify-content:flex-end }
+.prevrel__links .pill{ font-size:12.5px; padding:8px 15px }
+@media (max-width:760px){
+  .prevrel{ grid-template-columns:72px minmax(0,1fr); padding:14px }
+  .prevrel__art{ width:72px }
+  .prevrel__links{ grid-column:1 / -1; justify-content:flex-start }
+}
+
+/* ---------- audio preview clip ---------- */
+.clip{
+  margin-top:24px; padding:18px 20px; border-radius:3px;
+  background:var(--siyahi); border:1px solid var(--hairline);
+  border-left:2px solid var(--accent);
+}
+.clip__label{
+  font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:12px;
+}
+.clip audio{ width:100%; height:38px; display:block; border-radius:100px }
+.clip audio::-webkit-media-controls-panel{ background:var(--siyahi-2) }
+.clip .hint{ margin-top:10px }
