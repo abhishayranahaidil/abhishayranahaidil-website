@@ -550,6 +550,14 @@ footer li a:hover{ color:var(--kagaz) }
   font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
   color:var(--accent); margin-bottom:12px;
 }
-.clip audio{ width:100%; height:38px; display:block; border-radius:100px }
-.clip audio::-webkit-media-controls-panel{ background:var(--siyahi-2) }
+.clip audio{
+  width:100%; height:42px; display:block; border-radius:100px;
+  /* force light-mode native controls — on a dark card the default
+     renders near-black on near-black and all but disappears on phones */
+  color-scheme:light;
+  background:var(--kagaz);
+  border:1px solid var(--accent);
+}
+.clip audio::-webkit-media-controls-panel{ background:var(--kagaz) }
+.clip audio::-webkit-media-controls-enclosure{ border-radius:100px; background:var(--kagaz) }
 .clip .hint{ margin-top:10px }
