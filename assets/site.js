@@ -206,7 +206,7 @@
 
     function start() {
       if (timer || REDUCED || window.SHERS.length < 2) return;
-      timer = setInterval(function () { show((i + 1) % window.SHERS.length); }, 9500);
+      timer = setInterval(function () { show((i + 1) % window.SHERS.length); }, 6000);
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
 

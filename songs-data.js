@@ -6,7 +6,7 @@
    ============================================================ */
 
 window.SONGS = [
- {"slug": "laut-aa", "title": "Laut Aa", "hi": "लौट आ", "sub": "", "year": 2026, "cat": "Heartbreak & Longing", "date": "4 September 2026", "desc": "“Laut Aa” — come back.", "cover": "assets/laut-aa.jpg", "audio": "assets/laut-aa.mp3", "links": {}, "latest": true, "upcoming": true, "placeholder": true},
+ {"slug": "laut-aa", "title": "Laut Aa", "hi": "लौट आ", "sub": "", "year": 2026, "cat": "Heartbreak & Longing", "date": "4 September 2026", "desc": "“Laut Aa” — come back.", "cover": "assets/laut-aa.jpg", "audio": "assets/laut-aa.mp3", "links": {"youtube": "https://youtu.be/JueDw7cZQXY", "spotify": "https://open.spotify.com/album/03YEVkiwz9GMNAfNIb1lxu"}, "yt": "JueDw7cZQXY", "sp": "album/03YEVkiwz9GMNAfNIb1lxu", "latest": true, "placeholder": true},
  {"slug": "bhai-mere", "title": "Bhai Mere", "sub": "Rakhi Song", "hi": "भाई मेरे", "year": 2026, "cat": "Family & Devotional", "date": "27 August 2026", "desc": "“Bhai Mere” — my brother. A Rakshabandhan song.", "yt": "eHbj759ImZw", "cover": "https://i.scdn.co/image/ab67616d0000b273170f5ba3873c830b9d15bb15", "sp": "track/56nQ8KvrfQSNNNwddf4aG0", "links": {"youtube": "https://www.youtube.com/watch?v=eHbj759ImZw", "spotify": "https://open.spotify.com/album/22ZyOjHVAI6TB3O3GYJNzn"}, "placeholder": true},
  {
   "slug": "tum-hi-to-ho",
