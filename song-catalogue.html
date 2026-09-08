@@ -46,7 +46,12 @@
 </section>
 <section class="sec" style="padding-top:clamp(30px,4vw,44px)">
  <div class="wrap">
-  <div class="tools">
+  <div class="picked" id="picked">
+   <p class="picked__lead">Six to start with.</p>
+   <div class="picked__grid" id="pickedGrid"></div>
+   <button class="btn btn--sm" id="showAll" type="button">Browse all 50+ songs</button>
+  </div>
+  <div class="tools" id="tools" hidden>
    <div class="chips"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="Romantic" style="--c:var(--romantic)">Romantic</button><button class="chip" data-f="Heartbreak &amp; Longing" style="--c:var(--heartbreak)">Heartbreak &amp; Longing</button><button class="chip" data-f="Ghazal &amp; Nazm" style="--c:var(--ghazal)">Ghazal &amp; Nazm</button><button class="chip" data-f="Dance" style="--c:var(--dance)">Dance</button><button class="chip" data-f="Family &amp; Devotional" style="--c:var(--devotional)">Family &amp; Devotional</button><button class="chip" data-f="Patriotic" style="--c:var(--patriotic)">Patriotic</button><button class="chip" data-f="Life &amp; Friendship" style="--c:var(--friendship)">Life &amp; Friendship</button></div>
    <div class="searchrow">
     <input class="search" id="q" type="search" placeholder="Search a title or a line of lyrics" aria-label="Search songs">
@@ -54,7 +59,7 @@
     <span class="tally" id="tally"></span>
    </div>
   </div>
-  <div class="grid" id="grid"><article class="song rv" data-d="0" style="--accent:var(--heartbreak)"><a class="song__art" href="laut-aa.html" tabindex="-1" aria-hidden="true"><img src="assets/laut-aa.jpg" alt="Laut Aa — cover art" width="640" height="640" loading="lazy"><span class="song__cat">Heartbreak &amp; Longing</span></a><div class="song__body"><h3 class="song__title"><a href="laut-aa.html">Laut Aa</a></h3><div class="song__hi" lang="hi">लौट आ</div><div class="song__foot"><span>2026</span><span class="lyr">New</span></div></div></article><article class="song rv" data-d="0" style="--accent:var(--devotional)"><a class="song__art" href="bhai-mere.html" tabindex="-1" aria-hidden="true"><img src="https://i.scdn.co/image/ab67616d0000b273170f5ba3873c830b9d15bb15" alt="Bhai Mere — cover art" width="640" height="640" loading="lazy"><span class="song__cat">Family &amp; Devotional</span></a><div class="song__body"><h3 class="song__title"><a href="bhai-mere.html">Bhai Mere</a></h3><div class="song__hi" lang="hi">भाई मेरे</div><div class="song__foot"><span>2026</span></div></div></article><article class="song rv" data-d="0" style="--accent:var(--romantic)"><a class="song__art" href="tum-hi-to-ho.html" tabindex="-1" aria-hidden="true"><img src="https://i.scdn.co/image/ab67616d0000b2732aebe9ce341c8e0d104061e4" alt="Tum Hi To Ho — cover art" width="640" height="640" loading="lazy"><span class="song__cat">Romantic</span></a><div class="song__body"><h3 class="song__title"><a href="tum-hi-to-ho.html">Tum Hi To Ho</a></h3><div class="song__hi" lang="hi">तुम ही तो हो</div><div class="song__foot"><span>2026</span></div></div></article>
+  <div class="grid" id="grid" hidden><article class="song rv" data-d="0" style="--accent:var(--heartbreak)"><a class="song__art" href="laut-aa.html" tabindex="-1" aria-hidden="true"><img src="assets/laut-aa.jpg" alt="Laut Aa — cover art" width="640" height="640" loading="lazy"><span class="song__cat">Heartbreak &amp; Longing</span></a><div class="song__body"><h3 class="song__title"><a href="laut-aa.html">Laut Aa</a></h3><div class="song__hi" lang="hi">लौट आ</div><div class="song__foot"><span>2026</span><span class="lyr">New</span></div></div></article><article class="song rv" data-d="0" style="--accent:var(--devotional)"><a class="song__art" href="bhai-mere.html" tabindex="-1" aria-hidden="true"><img src="https://i.scdn.co/image/ab67616d0000b273170f5ba3873c830b9d15bb15" alt="Bhai Mere — cover art" width="640" height="640" loading="lazy"><span class="song__cat">Family &amp; Devotional</span></a><div class="song__body"><h3 class="song__title"><a href="bhai-mere.html">Bhai Mere</a></h3><div class="song__hi" lang="hi">भाई मेरे</div><div class="song__foot"><span>2026</span></div></div></article><article class="song rv" data-d="0" style="--accent:var(--romantic)"><a class="song__art" href="tum-hi-to-ho.html" tabindex="-1" aria-hidden="true"><img src="https://i.scdn.co/image/ab67616d0000b2732aebe9ce341c8e0d104061e4" alt="Tum Hi To Ho — cover art" width="640" height="640" loading="lazy"><span class="song__cat">Romantic</span></a><div class="song__body"><h3 class="song__title"><a href="tum-hi-to-ho.html">Tum Hi To Ho</a></h3><div class="song__hi" lang="hi">तुम ही तो हो</div><div class="song__foot"><span>2026</span></div></div></article>
 <article class="song rv" data-d="45" style="--accent:var(--patriotic)"><a class="song__art" href="two-homes-one-heart.html" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/715O4aSIG_g/maxresdefault.jpg" alt="Two Homes One Heart — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/715O4aSIG_g/hqdefault.jpg'"><span class="song__cat">Patriotic</span></a><div class="song__body"><h3 class="song__title"><a href="two-homes-one-heart.html">Two Homes One Heart</a></h3><div class="song__foot"><span>2026</span></div></div></article>
 <article class="song rv" data-d="90" style="--accent:var(--romantic)"><a class="song__art" href="kaun-hai-tu.html" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/d0YunqQSwKo/maxresdefault.jpg" alt="Kaun Hai Tu — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/d0YunqQSwKo/hqdefault.jpg'"><span class="song__cat">Romantic</span></a><div class="song__body"><h3 class="song__title"><a href="kaun-hai-tu.html">Kaun Hai Tu</a></h3><div class="song__hi" lang="hi">कौन है तू</div><div class="song__foot"><span>2026</span></div></div></article>
 <article class="song rv" data-d="135" style="--accent:var(--romantic)"><a class="song__art" href="bavre.html" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/da6LvaBvhuc/maxresdefault.jpg" alt="Bavre — cover art" width="640" height="640" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/da6LvaBvhuc/hqdefault.jpg'"><span class="song__cat">Romantic</span></a><div class="song__body"><h3 class="song__title"><a href="bavre.html">Bavre</a></h3><div class="song__hi" lang="hi">बावरे</div><div class="song__foot"><span>2026</span></div></div></article>
@@ -133,6 +138,7 @@
 <script src="songs-data.js"></script>
 <script src="assets/site.js"></script>
 <script>
+window.PICKS = ['laut-aa','gam-teri-bewafai-ka','mere-vatan','bechainiyan','meet-mere','ruhaniya-title-track'];
 window.renderPage = function(){
   var S=window.SITE, $=S.$, $$=S.$$, esc=S.esc;
   var grid=$('#grid'), tally=$('#tally'), q=$('#q'), chips=$$('.chip'), empty=$('#empty');
@@ -200,6 +206,21 @@ window.renderPage = function(){
     chips.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.f==='all'?'true':'false');});
     draw();
   });
+  // curated layer first; the archive opens on request
+  var picked=document.getElementById('pickedGrid'), tools=document.getElementById('tools'),
+      pickedBox=document.getElementById('picked'), showAll=document.getElementById('showAll');
+  if(picked){
+    var chosen=window.PICKS.map(function(sl){
+      return window.SONGS.filter(function(s){return s.slug===sl})[0]; }).filter(Boolean);
+    picked.innerHTML=chosen.map(function(s,n){return card(s,n);}).join('');
+    window.reveals();
+  }
+  function openArchive(){
+    pickedBox.hidden=true; tools.hidden=false; grid.hidden=false;
+    draw(); tools.scrollIntoView({block:'start'});
+  }
+  if(showAll) showAll.addEventListener('click', openArchive);
+  if(location.search.indexOf('c=')>-1 || location.hash==='#all') openArchive();
   draw();
 };
 </script>

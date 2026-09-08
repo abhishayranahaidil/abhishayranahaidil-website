@@ -80,7 +80,7 @@
 
   /* ---------- reveal on scroll ---------- */
   function reveals() {
-    var els = $$('.rv:not(.is-on), .ly:not(.is-on)');
+    var els = $$('.rv:not(.is-on), .ly:not(.is-on), .mv:not(.is-on)');
     if (!els.length) return;
     if (REDUCED || !('IntersectionObserver' in window)) {
       els.forEach(function (e) { e.classList.add('is-on'); });

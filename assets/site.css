@@ -14,6 +14,10 @@
   --sona:        #C9963F;   /* gold leaf — structure, restraint */
   --sona-soft:   #E3BE79;
   --hairline:    rgba(243,235,220,.11);
+  --scrim:       rgba(21,18,28,.55);
+  --artscrim:    rgba(21,18,28,.82);
+  --shade:       rgba(0,0,0,.5);
+  --playerbg:    var(--kagaz);
 
   /* emotion hues */
   --romantic:    #E0879A;
@@ -280,7 +284,7 @@ h1,h2,h3,h4{ font-family:var(--display); font-weight:400; line-height:1.1; lette
 .song:hover .song__art img{ transform:scale(1.055); filter:saturate(1.05) }
 .song__art::after{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(21,18,28,.82) 0%, transparent 52%);
+  background:linear-gradient(to top, var(--artscrim) 0%, transparent 52%);
   opacity:.9;
 }
 .song__cat{
@@ -417,7 +421,7 @@ h1,h2,h3,h4{ font-family:var(--display); font-weight:400; line-height:1.1; lette
 .band p{ color:var(--dhundh); margin-bottom:14px }
 .bookface{
   border:1px solid var(--hairline); border-radius:2px; overflow:hidden;
-  background:var(--siyahi-3); box-shadow:0 18px 44px rgba(0,0,0,.5);
+  background:var(--siyahi-3); box-shadow:0 18px 44px var(--shade);
   transition:transform .5s var(--ease);
 }
 .bookface img{ width:100%; height:auto; display:block }
@@ -555,11 +559,11 @@ footer li a:hover{ color:var(--kagaz) }
   /* force light-mode native controls — on a dark card the default
      renders near-black on near-black and all but disappears on phones */
   color-scheme:light;
-  background:var(--kagaz);
+  background:var(--playerbg);
   border:1px solid var(--accent);
 }
-.clip audio::-webkit-media-controls-panel{ background:var(--kagaz) }
-.clip audio::-webkit-media-controls-enclosure{ border-radius:100px; background:var(--kagaz) }
+.clip audio::-webkit-media-controls-panel{ background:var(--playerbg) }
+.clip audio::-webkit-media-controls-enclosure{ border-radius:100px; background:var(--playerbg) }
 .clip .hint{ margin-top:10px }
 
 
@@ -632,7 +636,7 @@ footer li a:hover{ color:var(--kagaz) }
 .bookmain{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
   gap:clamp(28px,5vw,60px); align-items:start }
 .bookmain__cover{ border:1px solid var(--hairline); border-radius:3px; overflow:hidden;
-  box-shadow:0 22px 52px rgba(0,0,0,.5) }
+  box-shadow:0 22px 52px var(--shade) }
 .bookmain__cover img{ width:100%; height:auto; display:block }
 .bookmain p{ margin-bottom:16px; color:var(--dhundh) }
 .bookfacts{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--hairline);
@@ -662,7 +666,7 @@ a.bookface{ display:block }
 }
 .mehfil::after{      /* keeps the verse readable over the photograph */
   content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:linear-gradient(90deg, var(--siyahi) 26%, rgba(21,18,28,.55) 52%, transparent 78%);
+  background:linear-gradient(90deg, var(--siyahi) 26%, var(--scrim) 52%, transparent 78%);
 }
 
 .sher{ min-height:clamp(190px,26vh,280px); max-width:23ch }
@@ -699,3 +703,197 @@ a.bookface{ display:block }
 
 @media (min-width:1500px){ .portrait{ width:42%; right:calc((100vw - 1400px)/2 * -1 + 0px) } }
 @media (prefers-reduced-motion:reduce){ .portrait img{ filter:grayscale(1) contrast(1.08) } }
+
+/* ============================================================
+   THE MOVEMENT — poem into song. The one loud thing on the site.
+   ============================================================ */
+.mv{
+  padding-block:clamp(90px,17vh,190px);
+  border-bottom:1px solid var(--hairline);
+  background:
+    radial-gradient(900px 520px at 22% 8%, rgba(201,150,63,.055), transparent 64%),
+    radial-gradient(760px 460px at 84% 88%, rgba(141,201,143,.045), transparent 62%);
+}
+.mv .wrap{ max-width:960px }
+.mv__label{
+  font-size:11px; font-weight:600; letter-spacing:.34em; text-transform:uppercase;
+  color:var(--sona); margin-bottom:clamp(26px,4vh,44px);
+}
+.mv__verse{ margin:0 }
+.mv__verse span{
+  display:block; font-family:var(--dev);
+  font-size:clamp(30px,6.4vw,74px);      /* nothing else on the site is this size */
+  line-height:1.52; color:var(--kagaz); text-wrap:balance;
+  letter-spacing:-.005em;
+}
+.mv__verse span + span{ margin-top:.18em }
+.mv__gloss{
+  font-family:var(--display); font-style:italic; color:var(--dhundh);
+  font-size:clamp(15px,1.8vw,19px); line-height:1.6;
+  max-width:46ch; margin-top:clamp(26px,4vh,42px);
+}
+.mv__thread{ height:clamp(64px,11vh,118px); margin:clamp(34px,5vh,56px) 0 0; display:block }
+.mv__thread i{
+  display:block; width:1px; height:100%;
+  background:linear-gradient(var(--sona), transparent);
+  transform-origin:top; transform:scaleY(0);
+  transition:transform 1.1s var(--ease);
+}
+.mv.is-on .mv__thread i{ transform:scaleY(1) }
+.mv__turn{
+  font-family:var(--display); font-style:italic; color:var(--sona-soft);
+  font-size:clamp(16px,2vw,21px); margin:6px 0 clamp(30px,5vh,52px);
+}
+.mv__song{
+  display:grid; grid-template-columns:clamp(110px,15vw,168px) minmax(0,1fr);
+  gap:clamp(20px,3.4vw,38px); align-items:center;
+  padding:clamp(16px,2.4vw,24px); margin-left:calc(clamp(16px,2.4vw,24px) * -1);
+  border-radius:3px; transition:background .3s var(--ease);
+}
+.mv__song:hover{ background:var(--siyahi-2) }
+.mv__art{ display:block; aspect-ratio:1; border-radius:2px; overflow:hidden;
+  background:var(--siyahi-3); box-shadow:0 16px 40px var(--shade) }
+.mv__art img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease) }
+.mv__song:hover .mv__art img{ transform:scale(1.05) }
+.mv__meta{ display:flex; flex-direction:column; gap:5px }
+.mv__meta .mv__label{ margin-bottom:8px }
+.mv__title{ font-family:var(--display); font-size:clamp(26px,4vw,42px); color:var(--kagaz); line-height:1.1 }
+.mv__hi{ font-family:var(--dev); font-size:clamp(16px,2vw,21px); color:var(--dhundh) }
+.mv__go{ font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--sona); margin-top:12px }
+.mv__song:hover .mv__title{ color:var(--sona-soft) }
+
+/* ---------- three doors ---------- */
+.doors{ padding-block:clamp(58px,10vh,110px); border-bottom:1px solid var(--hairline) }
+.doors__lead{ font-family:var(--display); font-size:clamp(18px,2.3vw,24px);
+  color:var(--dhundh); margin-bottom:clamp(28px,4vh,44px); max-width:40ch }
+.doors__grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px;
+  background:var(--hairline); border:1px solid var(--hairline); border-radius:3px; overflow:hidden }
+.door{ background:var(--siyahi); display:flex; flex-direction:column; gap:7px;
+  padding:clamp(24px,3.4vw,34px); transition:background .3s var(--ease) }
+.door:hover{ background:var(--siyahi-2) }
+.door__n{ font-family:var(--display); font-size:13px; color:var(--sona); letter-spacing:.2em }
+.door__k{ font-family:var(--display); font-size:clamp(22px,2.8vw,30px); color:var(--kagaz) }
+.door:hover .door__k{ color:var(--sona-soft) }
+.door__d{ font-size:14.5px; color:var(--dhundh) }
+
+@media (max-width:700px){
+  .mv__song{ grid-template-columns:1fr; margin-left:0 }
+  .mv__art{ max-width:210px }
+}
+
+/* ---------- songs: the six, before the archive ---------- */
+.picked{ margin-bottom:clamp(30px,5vh,54px) }
+.picked__lead{ font-family:var(--display); font-size:clamp(18px,2.2vw,23px);
+  color:var(--dhundh); margin-bottom:clamp(22px,3.4vh,34px) }
+.picked__grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(238px,1fr));
+  gap:clamp(16px,2.2vw,26px); margin-bottom:clamp(28px,4vh,42px) }
+@media (max-width:640px){
+  .picked__grid{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)) }
+}
+
+
+/* ============================================================
+   LIGHT SETTINGS — dark is the default (no data-theme attribute).
+   Any [data-theme] value below is a light page.
+   ============================================================ */
+
+[data-theme="stone"]{            /* book cover: petrol, sage, cream */
+  --siyahi:#EFEEE5; --siyahi-2:#F9F8F1; --siyahi-3:#E2E1D4;
+  --kagaz:#141D1B; --dhundh:#616B65; --sona:#8A6014; --sona-soft:#6B4A0F;
+  --hairline:rgba(20,29,27,.15); --scrim:rgba(239,238,229,.55);
+  --artscrim:rgba(20,29,27,.62); --shade:rgba(40,60,55,.16); --playerbg:#F9F8F1;
+  --romantic:#A64358; --heartbreak:#2F5580; --ghazal:#5C4287; --dance:#8A6014;
+  --devotional:#7A5518; --patriotic:#256239; --friendship:#186059;
+  --accent:#1B6259; --accent-dim:rgba(27,98,89,.10);
+  --sheen:linear-gradient(104deg,#1B6259,#3C7A5E 42%,#8A6014);
+  --wash:radial-gradient(1150px 660px at 78% -8%,rgba(27,98,89,.11),transparent 62%),
+         radial-gradient(880px 540px at 4% 40%,rgba(138,96,20,.09),transparent 60%);
+}
+[data-theme="marigold"]{         /* saffron and vermilion, festival warmth */
+  --siyahi:#F5EDDE; --siyahi-2:#FCF7EB; --siyahi-3:#EADEC7;
+  --kagaz:#22190D; --dhundh:#6E6250; --sona:#A87413; --sona-soft:#87590C;
+  --hairline:rgba(34,25,13,.15); --scrim:rgba(245,237,222,.55);
+  --artscrim:rgba(34,25,13,.62); --shade:rgba(120,80,30,.17); --playerbg:#FCF7EB;
+  --romantic:#B4405A; --heartbreak:#37548A; --ghazal:#65418E; --dance:#A87413;
+  --devotional:#8E5D17; --patriotic:#2A6438; --friendship:#1B6259;
+  --accent:#C05620; --accent-dim:rgba(192,86,32,.11);
+  --sheen:linear-gradient(104deg,#E0952A,#C05620 52%,#8E3B1E);
+  --wash:radial-gradient(1150px 680px at 80% -10%,rgba(224,149,42,.16),transparent 62%),
+         radial-gradient(880px 540px at 2% 38%,rgba(192,86,32,.10),transparent 60%);
+}
+[data-theme="neel"]{             /* indigo-dyed cloth */
+  --siyahi:#ECEEF3; --siyahi-2:#F7F9FC; --siyahi-3:#DDE2EB;
+  --kagaz:#131B36; --dhundh:#59617E; --sona:#7E6A22; --sona-soft:#65531A;
+  --hairline:rgba(19,27,54,.15); --scrim:rgba(236,238,243,.55);
+  --artscrim:rgba(19,27,54,.62); --shade:rgba(30,40,90,.15); --playerbg:#F7F9FC;
+  --romantic:#A03E5E; --heartbreak:#26417F; --ghazal:#553B8C; --dance:#8A6212;
+  --devotional:#77551A; --patriotic:#215E3C; --friendship:#175E63;
+  --accent:#2B3E8C; --accent-dim:rgba(43,62,140,.10);
+  --sheen:linear-gradient(104deg,#2B3E8C,#2E6E86 48%,#1F7A6B);
+  --wash:radial-gradient(1150px 680px at 80% -10%,rgba(43,62,140,.13),transparent 62%),
+         radial-gradient(880px 540px at 2% 38%,rgba(31,122,107,.09),transparent 60%);
+}
+[data-theme="sandstone"]{        /* Jaipur stone, terracotta, aged gold */
+  --siyahi:#F1E8D8; --siyahi-2:#FAF4E8; --siyahi-3:#E2D5BE;
+  --kagaz:#2A1D11; --dhundh:#6F6152; --sona:#8E6A16; --sona-soft:#6F5210;
+  --hairline:rgba(42,29,17,.16); --scrim:rgba(241,232,216,.55);
+  --artscrim:rgba(42,29,17,.62); --shade:rgba(110,80,40,.18); --playerbg:#FAF4E8;
+  --romantic:#A8455A; --heartbreak:#33538A; --ghazal:#5E4189; --dance:#8E6A16;
+  --devotional:#7C5716; --patriotic:#2A6238; --friendship:#1A605C;
+  --accent:#A6552B; --accent-dim:rgba(166,85,43,.11);
+  --sheen:linear-gradient(104deg,#A6552B,#C08A3A 50%,#8E6A16);
+  --wash:radial-gradient(1150px 680px at 78% -8%,rgba(166,85,43,.13),transparent 62%),
+         radial-gradient(880px 540px at 4% 40%,rgba(192,138,58,.10),transparent 60%);
+}
+[data-theme="kagaz"]{            /* bone paper, near-black, one crimson */
+  --siyahi:#F4F2EB; --siyahi-2:#FBFAF5; --siyahi-3:#E6E3D8;
+  --kagaz:#111110; --dhundh:#69695F; --sona:#A81F3A; --sona-soft:#84172E;
+  --hairline:rgba(17,17,16,.14); --scrim:rgba(244,242,235,.55);
+  --artscrim:rgba(17,17,16,.62); --shade:rgba(60,55,45,.16); --playerbg:#FBFAF5;
+  --romantic:#A81F3A; --heartbreak:#2C4470; --ghazal:#523A7E; --dance:#7E6410;
+  --devotional:#6F5514; --patriotic:#215A33; --friendship:#175A55;
+  --accent:#A81F3A; --accent-dim:rgba(168,31,58,.09);
+  --sheen:linear-gradient(104deg,#A81F3A,#701430);
+  --wash:radial-gradient(1100px 640px at 80% -8%,rgba(168,31,58,.08),transparent 62%);
+}
+[data-theme="roseash"]{          /* warm grey, aubergine, rose gold */
+  --siyahi:#F1EDEC; --siyahi-2:#FAF7F6; --siyahi-3:#E4DDDD;
+  --kagaz:#231A21; --dhundh:#6E6067; --sona:#9B6A3C; --sona-soft:#7C5129;
+  --hairline:rgba(35,26,33,.14); --scrim:rgba(241,237,236,.55);
+  --artscrim:rgba(35,26,33,.62); --shade:rgba(90,60,70,.16); --playerbg:#FAF7F6;
+  --romantic:#8E4258; --heartbreak:#31518A; --ghazal:#5A3D85; --dance:#9B6A3C;
+  --devotional:#7E5A2A; --patriotic:#2A6140; --friendship:#1A5F5D;
+  --accent:#8E4258; --accent-dim:rgba(142,66,88,.10);
+  --sheen:linear-gradient(104deg,#8E4258,#B07050 52%,#9B6A3C);
+  --wash:radial-gradient(1150px 660px at 80% -8%,rgba(142,66,88,.11),transparent 62%),
+         radial-gradient(880px 540px at 4% 40%,rgba(155,106,60,.09),transparent 60%);
+}
+
+/* ---- everything below applies to every light setting ---- */
+[data-theme] body{ background-image:var(--wash) }
+[data-theme] .portrait img{
+  filter:grayscale(1) contrast(1.02) brightness(1.05);
+  -webkit-mask-image:linear-gradient(100deg,transparent 0%,#000 46%,#000 100%);
+  mask-image:linear-gradient(100deg,transparent 0%,#000 46%,#000 100%);
+}
+[data-theme] .mehfil::after{
+  background:linear-gradient(90deg,var(--siyahi) 30%,var(--scrim) 58%,transparent 80%);
+}
+[data-theme] .song__art,[data-theme] .mv__art,[data-theme] .latest__art,
+[data-theme] .prevrel__art,[data-theme] .cover,[data-theme] .bookmain__cover{
+  border:1px solid var(--hairline);
+}
+[data-theme] .marquee,[data-theme] .door{ background:var(--siyahi-2) }
+[data-theme] .mv{ background:var(--wash) }
+[data-theme] ::selection{ background:var(--accent); color:var(--siyahi) }
+[data-theme] .mv__thread i{ width:2px; background:var(--sheen) }
+[data-theme] .bookface{ box-shadow:0 18px 44px var(--shade) }
+
+@supports (-webkit-background-clip:text) or (background-clip:text){
+  [data-theme] .mv__verse span,
+  [data-theme] .mehfil__id h1{
+    background-image:var(--sheen);
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent; -webkit-text-fill-color:transparent;
+  }
+}
