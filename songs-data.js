@@ -6,8 +6,79 @@
    ============================================================ */
 
 window.SONGS = [
- {"slug": "laut-aa", "title": "Laut Aa", "hi": "लौट आ", "sub": "", "year": 2026, "cat": "Heartbreak & Longing", "date": "4 September 2026", "desc": "“Laut Aa” — come back.", "cover": "assets/laut-aa.jpg", "audio": "assets/laut-aa.mp3", "links": {"youtube": "https://youtu.be/JueDw7cZQXY", "spotify": "https://open.spotify.com/album/03YEVkiwz9GMNAfNIb1lxu"}, "yt": "JueDw7cZQXY", "sp": "album/03YEVkiwz9GMNAfNIb1lxu", "latest": true, "placeholder": true},
- {"slug": "bhai-mere", "title": "Bhai Mere", "sub": "Rakhi Song", "hi": "भाई मेरे", "year": 2026, "cat": "Family & Devotional", "date": "27 August 2026", "desc": "“Bhai Mere” — my brother. A Rakshabandhan song.", "yt": "eHbj759ImZw", "cover": "https://i.scdn.co/image/ab67616d0000b273170f5ba3873c830b9d15bb15", "sp": "track/56nQ8KvrfQSNNNwddf4aG0", "links": {"youtube": "https://www.youtube.com/watch?v=eHbj759ImZw", "spotify": "https://open.spotify.com/album/22ZyOjHVAI6TB3O3GYJNzn"}, "placeholder": true},
+ {
+  "slug": "haq-hai-tumhara",
+  "title": "Haq Hai Tumhara",
+  "hi": "हक़ है तुम्हारा",
+  "sub": "",
+  "year": 2026,
+  "cat": "Romantic",
+  "date": "1 October 2026",
+  "desc": "“Haq Hai Tumhara” — the right is yours.",
+  "cover": "https://i.scdn.co/image/ab67616d0000b273e41808fab2529e22d07a804f",
+  "yt": "3sY4O1A3h8o",
+  "sp": "album/4TdqfEsfNLDZWfTmpliJYf",
+  "links": {
+   "youtube": "https://www.youtube.com/watch?v=3sY4O1A3h8o",
+   "spotify": "https://open.spotify.com/album/4TdqfEsfNLDZWfTmpliJYf"
+  },
+  "latest": true,
+  "placeholder": true
+ },
+ {
+  "slug": "peelo-peelo",
+  "title": "Peelo Peelo Thoda Jeelo",
+  "sub": "Party Song",
+  "hi": "पीलो पीलो थोड़ा जीलो",
+  "year": 2026,
+  "cat": "Dance",
+  "date": "20 September 2026",
+  "desc": "“Peelo Peelo Thoda Jeelo” — drink a little, live a little. A party song.",
+  "cover": "https://i.scdn.co/image/ab67616d0000b273b9b22dd6ef1f2049d01db539",
+  "yt": "YZrxNb3WLfw",
+  "sp": "album/20IbSFMDQhCvDKBsC6DqjX",
+  "links": {
+   "youtube": "https://www.youtube.com/watch?v=YZrxNb3WLfw",
+   "spotify": "https://open.spotify.com/album/20IbSFMDQhCvDKBsC6DqjX"
+  },
+  "placeholder": true
+ },
+ {
+  "slug": "laut-aa",
+  "title": "Laut Aa",
+  "hi": "लौट आ",
+  "sub": "",
+  "year": 2026,
+  "cat": "Heartbreak & Longing",
+  "date": "4 September 2026",
+  "desc": "“Laut Aa” — come back.",
+  "cover": "assets/laut-aa.jpg",
+  "links": {
+   "youtube": "https://www.youtube.com/watch?v=JueDw7cZQXY",
+   "spotify": "https://open.spotify.com/track/4dbSvNE5CpjdK4kgnwSQNj"
+  },
+  "yt": "JueDw7cZQXY",
+  "sp": "track/4dbSvNE5CpjdK4kgnwSQNj",
+  "placeholder": true
+ },
+ {
+  "slug": "bhai-mere",
+  "title": "Bhai Mere",
+  "sub": "Rakhi Song",
+  "hi": "भाई मेरे",
+  "year": 2026,
+  "cat": "Family & Devotional",
+  "date": "27 August 2026",
+  "desc": "“Bhai Mere” — my brother. A Rakshabandhan song.",
+  "yt": "eHbj759ImZw",
+  "cover": "https://i.scdn.co/image/ab67616d0000b273170f5ba3873c830b9d15bb15",
+  "sp": "track/56nQ8KvrfQSNNNwddf4aG0",
+  "links": {
+   "youtube": "https://www.youtube.com/watch?v=eHbj759ImZw",
+   "spotify": "https://open.spotify.com/album/22ZyOjHVAI6TB3O3GYJNzn"
+  },
+  "placeholder": true
+ },
  {
   "slug": "tum-hi-to-ho",
   "title": "Tum Hi To Ho",
@@ -24,7 +95,7 @@ window.SONGS = [
   "yt": "OOmGPsynH6I",
   "cover": "https://i.scdn.co/image/ab67616d0000b2732aebe9ce341c8e0d104061e4",
   "sp": "track/6OivUHULun7hviQ6ZV04zV",
-    "placeholder": true
+  "placeholder": true
  },
  {
   "slug": "two-homes-one-heart",
@@ -840,7 +911,11 @@ window.SHERS = [
    "तेरी ज़मीं पे क़दम नहीं मेरे तो क्या हुआ,",
    "तेरे ही नाम से जुड़ी है मेरी हर दुआ।"
   ],
-  "en": "What of it, that my feet never touch your soil — every prayer I make still carries your name."
+  "en": "What of it, that my feet never touch your soil — every prayer I make still carries your name.",
+  "roman": [
+   "Teri zameen pe qadam nahin mere to kya hua,",
+   "Tere hi naam se judi hai meri har dua."
+  ]
  },
  {
   "slug": "aashiqui-kitabi",
@@ -849,7 +924,11 @@ window.SHERS = [
    "है शायरी मेरी वो, जुस्तजू है मेरी,",
    "वो लगती है मुझे, जीने की हर वजह सी।"
   ],
-  "en": "She is my poetry, my seeking — she feels to me like every reason there is to live."
+  "en": "She is my poetry, my seeking — she feels to me like every reason there is to live.",
+  "roman": [
+   "Hai shayari meri wo, justaju hai meri,",
+   "Wo lagti hai mujhe, jeene ki har wajah si."
+  ]
  },
  {
   "slug": "gam-teri-bewafai-ka",
@@ -858,7 +937,11 @@ window.SHERS = [
    "दर्द का सावन है, आँसुओं की बारिश है,",
    "बेरंग है हर मौसम, ज़िंदा रहना भी तड़पाता है।"
   ],
-  "en": "A monsoon of pain, a rain of tears — every season colourless, and even staying alive aches."
+  "en": "A monsoon of pain, a rain of tears — every season colourless, and even staying alive aches.",
+  "roman": [
+   "Dard ka saawan hai, aansuon ki baarish hai,",
+   "Berang hai har mausam, zinda rehna bhi tadpaata hai."
+  ]
  },
  {
   "slug": "meet-mere",
@@ -867,7 +950,11 @@ window.SHERS = [
    "तेरा नाम इबादत सा लगता है,",
    "तू मुझे अब आदत सा लगता है।"
   ],
-  "en": "Your name has come to feel like prayer; you have come to feel like habit."
+  "en": "Your name has come to feel like prayer; you have come to feel like habit.",
+  "roman": [
+   "Tera naam ibaadat sa lagta hai,",
+   "Tu mujhe ab aadat sa lagta hai."
+  ]
  },
  {
   "slug": "mere-humdum",
@@ -876,7 +963,11 @@ window.SHERS = [
    "एक नज़र देखूँ तुझे तो, दिन सँवर जाता है,",
    "कांधे पे रख लूँ सर, तो हर रंज बिखर जाता है।"
   ],
-  "en": "One look at you and the day rights itself; my head on your shoulder and every sorrow scatters."
+  "en": "One look at you and the day rights itself; my head on your shoulder and every sorrow scatters.",
+  "roman": [
+   "Ek nazar dekhun tujhe to, din sanwar jaata hai,",
+   "Kaandhe pe rakh lun sar, to har ranj bikhar jaata hai."
+  ]
  },
  {
   "slug": "ae-dilruba",
@@ -885,7 +976,11 @@ window.SHERS = [
    "तेरे सिवा कुछ याद रहता नहीं,",
    "दिल-ए-कम्बख़्त कुछ भी सुनता नहीं।"
   ],
-  "en": "Nothing but you stays in the memory; this wretched heart will not listen to anything."
+  "en": "Nothing but you stays in the memory; this wretched heart will not listen to anything.",
+  "roman": [
+   "Tere siwa kuch yaad rehta nahin,",
+   "Dil-e-kambakht kuch bhi sunta nahin."
+  ]
  },
  {
   "slug": "tum-meri-ho",
@@ -894,7 +989,11 @@ window.SHERS = [
    "दूर नहीं, मेरी साँसों में हो,",
    "मेरे दिल के एहसासों में हो।"
   ],
-  "en": "Not far away at all — you are in my breath, and in everything this heart feels."
+  "en": "Not far away at all — you are in my breath, and in everything this heart feels.",
+  "roman": [
+   "Door nahin, meri saanson mein ho,",
+   "Mere dil ke ehsaason mein ho."
+  ]
  },
  {
   "slug": "tum-ho-toh",
@@ -903,7 +1002,11 @@ window.SHERS = [
    "दिल की इस ज़मीं में, तेरे प्यार की नमी है,",
    "कोई ग़म ही नहीं है… अगर तुम हो तो।"
   ],
-  "en": "In the soil of this heart there is the moisture of your love — there is no sorrow at all, if you are here."
+  "en": "In the soil of this heart there is the moisture of your love — there is no sorrow at all, if you are here.",
+  "roman": [
+   "Dil ki is zameen mein, tere pyaar ki nami hai,",
+   "Koi gham hi nahin hai… agar tum ho to."
+  ]
  },
  {
   "slug": "mere-papa-mere-hero",
@@ -912,6 +1015,10 @@ window.SHERS = [
    "ज़िंदगी की मुश्किल हर लहर को,",
    "वो दिखाता किनारा है।"
   ],
-  "en": "Every hard wave life sends, he is the one who shows me the shore."
+  "en": "Every hard wave life sends, he is the one who shows me the shore.",
+  "roman": [
+   "Zindagi ki mushkil har lehar ko,",
+   "Wo dikhaata kinaara hai."
+  ]
  }
 ];

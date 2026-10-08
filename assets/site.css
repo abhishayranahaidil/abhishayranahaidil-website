@@ -722,11 +722,11 @@ a.bookface{ display:block }
 .mv__verse{ margin:0 }
 .mv__verse span{
   display:block; font-family:var(--dev);
-  font-size:clamp(30px,6.4vw,74px);      /* nothing else on the site is this size */
+  font-size:clamp(23px,4.1vw,46px);
   line-height:1.52; color:var(--kagaz); text-wrap:balance;
   letter-spacing:-.005em;
 }
-.mv__verse span + span{ margin-top:.18em }
+
 .mv__gloss{
   font-family:var(--display); font-style:italic; color:var(--dhundh);
   font-size:clamp(15px,1.8vw,19px); line-height:1.6;
@@ -805,9 +805,13 @@ a.bookface{ display:block }
   --romantic:#A64358; --heartbreak:#2F5580; --ghazal:#5C4287; --dance:#8A6014;
   --devotional:#7A5518; --patriotic:#256239; --friendship:#186059;
   --accent:#1B6259; --accent-dim:rgba(27,98,89,.10);
-  --sheen:linear-gradient(104deg,#1B6259,#3C7A5E 42%,#8A6014);
-  --wash:radial-gradient(1150px 660px at 78% -8%,rgba(27,98,89,.11),transparent 62%),
-         radial-gradient(880px 540px at 4% 40%,rgba(138,96,20,.09),transparent 60%);
+  --sheen:linear-gradient(104deg,#1B6259,#3C7A5E 38%,#8A6014 72%,#A6552B);
+  --wash:
+    radial-gradient(1200px 700px at 82% -12%, rgba(27,98,89,.20), transparent 60%),
+    radial-gradient(1000px 620px at 6% 18%,  rgba(138,96,20,.16), transparent 58%),
+    radial-gradient(900px 560px at 50% 104%, rgba(166,85,43,.14), transparent 60%),
+    radial-gradient(760px 520px at 96% 62%,  rgba(60,122,94,.13), transparent 58%),
+    linear-gradient(176deg, #F6F5EE 0%, #EFEEE5 42%, #E9E8DC 100%);
 }
 [data-theme="marigold"]{         /* saffron and vermilion, festival warmth */
   --siyahi:#F5EDDE; --siyahi-2:#FCF7EB; --siyahi-3:#EADEC7;
@@ -897,3 +901,54 @@ a.bookface{ display:block }
     color:transparent; -webkit-text-fill-color:transparent;
   }
 }
+
+/* category hue must survive the light palettes */
+[data-theme][data-cat="Romantic"]{ --accent:var(--romantic) }
+[data-theme][data-cat="Heartbreak & Longing"]{ --accent:var(--heartbreak) }
+[data-theme][data-cat="Ghazal & Nazm"]{ --accent:var(--ghazal) }
+[data-theme][data-cat="Dance"]{ --accent:var(--dance) }
+[data-theme][data-cat="Family & Devotional"]{ --accent:var(--devotional) }
+[data-theme][data-cat="Patriotic"]{ --accent:var(--patriotic) }
+[data-theme][data-cat="Life & Friendship"]{ --accent:var(--friendship) }
+
+/* ---------- verse set in both scripts ---------- */
+.mv__verse span[lang="hi"]{ margin-top:.42em }
+.mv__verse span[lang="hi"]:first-child{ margin-top:0 }
+.mv__rom{
+  display:block; font-family:var(--display); font-style:italic;
+  font-size:clamp(13px,1.45vw,17px); line-height:1.5; letter-spacing:.005em;
+  color:var(--dhundh); margin-top:.18em;
+  -webkit-text-fill-color:currentColor; background-image:none;
+}
+.sher__rom{
+  display:block; font-family:var(--display); font-style:italic;
+  font-size:clamp(12.5px,1.3vw,15px); color:var(--dhundh); margin-top:.1em; margin-bottom:.3em;
+}
+.js .sher__rom{ opacity:0; transform:translateY(10px);
+  transition:opacity .9s var(--ease) .22s, transform .9s var(--ease) .22s }
+.sher.is-on .sher__rom{ opacity:1; transform:none }
+.mq__rom{ color:var(--dhundh); opacity:.75; margin-left:.5em; font-size:.82em; font-style:italic;
+  font-family:var(--display) }
+.marquee a{ display:inline-flex; align-items:baseline }
+
+/* ---------- the gradient field ---------- */
+[data-theme] body{ background-attachment:fixed; background-repeat:no-repeat; background-size:cover }
+[data-theme] .mv{
+  background:
+    radial-gradient(1000px 620px at 20% 6%,  rgba(27,98,89,.17), transparent 62%),
+    radial-gradient(880px 560px at 88% 92%,  rgba(166,85,43,.15), transparent 60%),
+    radial-gradient(700px 460px at 60% 44%,  rgba(138,96,20,.10), transparent 62%);
+}
+[data-theme] .marquee{
+  background:linear-gradient(90deg, var(--siyahi-2), var(--siyahi-3) 50%, var(--siyahi-2));
+}
+[data-theme] .doors{
+  background:radial-gradient(900px 480px at 50% 120%, rgba(27,98,89,.10), transparent 64%);
+}
+[data-theme] .mehfil{
+  background:radial-gradient(1100px 760px at 14% 10%, rgba(138,96,20,.13), transparent 62%);
+}
+
+.pm__rom{ display:block; font-family:var(--display); font-style:italic;
+  font-size:clamp(13px,1.5vw,16px); color:var(--dhundh); margin:.15em 0 .5em }
+.pm__line{ margin-top:.35em }

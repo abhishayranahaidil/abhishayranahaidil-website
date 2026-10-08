@@ -176,8 +176,9 @@
 
     function paint(n) {
       var s = window.SHERS[n];
-      lines.innerHTML = s.lines.map(function (l) {
-        return '<div class="sher__line">' + esc(l) + '</div>';
+      lines.innerHTML = s.lines.map(function (l, n) {
+        var r = (s.roman && s.roman[n]) ? '<span class="sher__rom" lang="en">' + esc(s.roman[n]) + '</span>' : '';
+        return '<div class="sher__line" lang="hi">' + esc(l) + '</div>' + r;
       }).join('');
       trans.textContent = s.en;
       from.innerHTML = 'from <a href="' + esc(s.slug) + '.html">' + esc(s.song) + '</a>';
@@ -241,7 +242,9 @@
     var t = $('#marqueeTrack');
     if (!t || !window.SONGS) return;
     var items = window.SONGS.map(function (s) {
-      return '<a href="' + esc(s.slug) + '.html" lang="' + (s.hi ? 'hi' : 'en') + '">' + esc(s.hi || s.title) + '</a>';
+      return '<a href="' + esc(s.slug) + '">' +
+             (s.hi ? '<span lang="hi">' + esc(s.hi) + '</span><span class="mq__rom" lang="en">' + esc(s.title) + '</span>'
+                   : '<span lang="en">' + esc(s.title) + '</span>') + '</a>';
     }).join('');
     t.innerHTML = items + items;   /* doubled so the loop is seamless */
   }
